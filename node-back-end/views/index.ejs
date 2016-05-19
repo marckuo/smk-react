@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.0/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="javascripts/p5.sound.js"></script>
+  <script language="javascript" type="text/javascript" src="javascripts/index_sketch.js"></script>
+
+  <div class="container">
+    <h1>SMK DASHBOARD</h1>
+      <div class="row text-uppercase">
+        <div id="temperature" class="col-xs-4">
+          <h3>Temperature</h3>
+          <p><span id="temp_output"></span>°C</p>
+        </div>
+        <div id="humidity" class="col-xs-4">
+          <h3>Humidity</h3>
+            <p><span id="humid_output"></span>%</p>
+        </div>
+        <div id="decibel" class="col-xs-4">
+          <h3>Decibel Monitor</h3>
+            <p id="decibel_output"></p>
+        </div>
+      </div>
+      <div class="row text-uppercase">
+        <div id="beverage" class="col-xs-4">
+          <h3>Number of Beverages poured</h3>
+            <p id="beverage_output"></p>
+        </div>
+        <div id="door_sensor" class="col-xs-4">
+          <h3>Number of times Door opened</h3>
+            <p id="door_output"></p>
+        </div>
+      </div>
+   </div>
+
+    <script>
+    $.getJSON('/api/last/temp', function(data){
+      $('#temp_output').append(data.value);
+     });
+    $.getJSON('/api/last/humid', function(data){
+      $('#humid_output').append(data.value);
+     });
+    $.getJSON('/api/last/door', function(data){
+      $('#door_output').append(data.count);
+     });
+    $.getJSON('/api/last/beverage', function(data){
+      $('#beverage_output').append(data.count);
+     });
+    </script>
+
+    <script>
+      var socket = io();
+    </script>
+
+    <script>
+      $temp_output = $('#temp_output');
+
+      socket.on('temp', function (data) {
+        $temp_output.text(data);
+      });
+
+      $humid_output = $('#humid_output');
+
+      socket.on('humid', function (data) {
+        $humid_output.text(data);
+      });
+
+      $door_output = $('#door_output');
+
+      socket.on('door', function (data) {
+        $door_output.text(data);
+      });
+
+      $beverage_output = $('#beverage_output');
+
+      socket.on('beverage', function (data) {
+        $beverage_output.text(data);
+      });
+
+      $decibel_output = $('#decibel_output');
+
+      // socket.on('sound', function(data){
+      //   $decibel_output.text(data);
+      // });
+
+    </script>
+  </body>
+</html>
