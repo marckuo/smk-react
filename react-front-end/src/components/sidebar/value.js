@@ -5,6 +5,7 @@ export default class Value extends Component {
   render() {
     return (
       <div className="value">
+      	{this.props.value}
       </div>
     )
   }
