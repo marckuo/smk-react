@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import style from './stylesheets/style.css';
 import Sidebar from './components/sidebar';
+import io from 'socket.io-client';
+var socket = io('http://localhost:4000');
 
 export default class App extends Component {
 	constructor(props) {
@@ -13,6 +15,7 @@ export default class App extends Component {
 		    beverage_img: "beverage.png"
 		  }
   }
+
 
   _beverageApiCall = () => {
     let self= this;
@@ -48,17 +51,58 @@ export default class App extends Component {
     let self= this;
     axios.get(`http://localhost:4000/api/last/temp`)
     .then(function(res) {
+			console.log("api temp", res)
       self.setState({
         temp_val: res.data.value
       })
     })
   }
 
+	// _tempSocket = () => {
+	// 	let self= this;
+	// 	socket.on('temp', function(data){
+	// 		console.log('this inside socket: ' + data);
+	// 		self.setState({
+	// 			temp_val: data.value
+	// 		});
+	// 	});
+	// }
+
   componentWillMount(){
   	this._beverageApiCall();
   	this._doorApiCall();
   	this._humidApiCall();
   	this._tempApiCall();
+		// this._tempSocket();
+		let self= this;
+
+		socket.on('temp', function(data){
+			console.log('this inside socket: ' + data);
+			self.setState({
+				temp_val: data
+			});
+		});
+
+		socket.on('humid', function(data){
+			console.log('this inside socket: ' + data);
+			self.setState({
+				humid_val: data
+			});
+		});
+
+		socket.on('beverage', function(data){
+			console.log('this inside socket: ' + data);
+			self.setState({
+				beverage_val: data
+			});
+		});
+
+		socket.on('door', function(data){
+			console.log('this inside socket: ' + data);
+			self.setState({
+				door_val: data
+			});
+		});
   }
 
   render() {
