@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import axios from 'axios';
 import style from './stylesheets/style.css';
 import Sidebar from './components/sidebar';
@@ -58,15 +58,45 @@ export default class App extends Component {
     })
   }
 
-	// _tempSocket = () => {
-	// 	let self= this;
-	// 	socket.on('temp', function(data){
-	// 		console.log('this inside socket: ' + data);
-	// 		self.setState({
-	// 			temp_val: data.value
-	// 		});
-	// 	});
-	// }
+  _beverageAllApiCall = () => {
+    let self= this;
+    axios.get(`http://localhost:4000/api/all/beverage`)
+    .then(function(res) {
+      self.setState({
+        beverage_all: res.data
+      })
+    })
+  }
+
+  _doorAllApiCall = () => {
+    let self= this;
+    axios.get(`http://localhost:4000/api/all/door`)
+    .then(function(res) {
+      self.setState({
+        door_all: res.data
+      })
+    })
+  }
+
+  _humidAllApiCall = () => {
+    let self= this;
+    axios.get(`http://localhost:4000/api/all/humid`)
+    .then(function(res) {
+      self.setState({
+        humid_all: res.data
+      })
+    })
+  }
+
+  _tempAllApiCall = () => {
+    let self= this;
+    axios.get(`http://localhost:4000/api/all/temp`)
+    .then(function(res) {
+      self.setState({
+        temp_all: res.data
+      })
+    })
+  }
 
   componentWillMount(){
   	this._beverageApiCall();
