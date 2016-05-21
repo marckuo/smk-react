@@ -47,6 +47,7 @@
     "react": "^0.14.6",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^0.14.6",
+    "react-socket": "^0.1.4",
     "style-loader": "^0.13.1"
   }
 }
