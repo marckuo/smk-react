@@ -1,8 +1,11 @@
-  import React, { Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import style from './stylesheets/style.css';
 import Sidebar from './components/sidebar';
+import Header from './components/header';
+import Body from './components/body';
 import io from 'socket.io-client';
+import Grid from 'react-bootstrap/lib/Grid';
 var socket = io('http://localhost:4000');
 
 export default class App extends Component {
@@ -16,13 +19,12 @@ export default class App extends Component {
 		  }
   }
 
-
   _beverageApiCall = () => {
     let self= this;
     axios.get(`http://localhost:4000/api/last/beverage`)
     .then(function(res) {
       self.setState({
-        beverage_val: res.data.value
+        beverage_val: res.data
       })
     })
   }
@@ -32,7 +34,7 @@ export default class App extends Component {
     axios.get(`http://localhost:4000/api/last/door`)
     .then(function(res) {
       self.setState({
-        door_val: res.data.value
+        door_val: res.data
       })
     })
   }
@@ -63,7 +65,7 @@ export default class App extends Component {
     axios.get(`http://localhost:4000/api/all/beverage`)
     .then(function(res) {
       self.setState({
-        beverage_all: res.data
+        beverage_all: res.data  
       })
     })
   }
@@ -103,7 +105,10 @@ export default class App extends Component {
   	this._doorApiCall();
   	this._humidApiCall();
   	this._tempApiCall();
-		// this._tempSocket();
+		this._tempAllApiCall();
+    this._humidAllApiCall();
+    this._doorAllApiCall();
+    this._beverageAllApiCall();
 		let self= this;
 
 		socket.on('temp', function(data){
@@ -137,9 +142,15 @@ export default class App extends Component {
 
   render() {
 		return (
-			<div className="container">
-			<Sidebar {...this.state} />
-			</div>
+			<grid>
+        <row className="show-grid">
+  		    <Header />
+        </row>
+        <row className="show-grid">
+          <Sidebar {...this.state} />
+          <Body />
+        </row>
+			</grid>
 			);
 		}
 	}

@@ -4,9 +4,10 @@ margin: 0;
 
 .bg {
 	position: absolute;
-	background: url(/src/bg/1.jpg) no-repeat fixed center;
-	background-position: right-top;
+	background: url(/src/bg/1.jpg) no-repeat center center fixed;
 	background-size: cover;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
   bottom: 0;
@@ -14,6 +15,7 @@ margin: 0;
   margin:0;
   padding:0;
   z-index:1;
+  flex: 1;
 }
 
 .root {
@@ -21,24 +23,30 @@ margin: 0;
 }
 .container {
 	margin:0;
+  padding:0;
+  height:100vh;
 	position:absolute;
 	display:inline-block;
 	z-index:997;
 }
 
+.header {
+  display:inline-flex;
+  margin:0;
+  padding:0;
+  width:100vw;
+}
+
 .sidebar {
-	margin:0;
-	position: absolute;
-  width: 190px;
-  height: 100vh;
-  display:inline-block;
-  z-index:999;
+  margin:0;
+  padding:0;
+  display:inline-flex;
+  height:100vh;
 }
 
 .row {
 	margin:0;
 	width:180px;
-	display:inline-flex;
 }
 
 .logo {
@@ -61,11 +69,18 @@ margin: 0;
 	font-size: 2em;
 	text-align:center;
 	transition: all 0.5s ease;
+  color:black;
 	}
 
 .value:hover {
 	font-size: 3em;
 	}
+
+#graph {
+  background: rgba(255,255,255,0.4);
+  width:90%;
+  height:90%;
+}
 
 #sketch{
 	z-index:0;
