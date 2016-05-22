@@ -103,7 +103,20 @@ export default class App extends Component {
 				door_val: data
 			});
 		});
-  }
+
+
+		socket.on('sound', function(data){
+
+
+		  var spectrumMap = data.map(function(num, index){
+		   return {'x': index + 1, 'y': num};
+		  });
+			self.setState({
+				sound_val: spectrumMap
+			});
+		});
+
+	}
 
   render() {
 		return (

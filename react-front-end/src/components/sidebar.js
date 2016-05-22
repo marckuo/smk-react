@@ -3,6 +3,7 @@ import style from '../stylesheets/style.css';
 import Icon from './sidebar/icon';
 import Logo from './sidebar/logo';
 import Value from './sidebar/value';
+import Sound from './sidebar/sound';
 import axios from 'axios';
 
 export default class Sidebar extends Component {
@@ -19,7 +20,7 @@ export default class Sidebar extends Component {
         <div className="row">
           <Icon className="humid" image={this.props.humid_img} />
             <Value value={`${this.props.humid_val}%`}/>
-            
+
         </div>
         <div className="row">
           <Icon className="beverage" image={this.props.beverage_img} />
@@ -31,7 +32,7 @@ export default class Sidebar extends Component {
         </div>
         <div className="row">
           <Icon />
-          <div id="sketch"></div>
+            <Sound value={this.props.sound_val}/>
         </div>
         <div className="row">
           <Icon />
