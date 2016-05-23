@@ -82,12 +82,29 @@ margin: 0;
   height:90%;
 }
 
-#sketch{
+#sketch {
 	z-index:0;
 }
 
-#logo{
+#logo {
 	width:175px;
 	height:auto;
 	padding:10px;
+}
+
+
+.temp {
+  position:relative;
+}
+
+.humid {
+  position:relative;
+}
+
+.beverage {
+  position:relative;
+}
+
+.door {
+  position:relative;
 }

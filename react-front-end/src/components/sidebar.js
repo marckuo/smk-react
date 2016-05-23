@@ -6,23 +6,51 @@ import Grid from 'react-bootstrap/lib/Grid';
 import axios from 'axios';
 
 export default class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  tempSelected = () => {
+    this.props._setTempSelected();
+  }
+
+  humidSelected = () => {
+    this.props._setHumidSelected();
+  }
+
+  beverageSelected = () => {
+    this.props._setBeverageSelected();
+  }
+
+  doorSelected = () => {
+    this.props._setDoorSelected();
+  }
 
   render() {
     return (
       <div className="col-xs-4">
         <row>
-          <Icon className="temp" image={this.props.temp_img} />
-            <Value className="temp" value={`${this.props.temp_val}°C`} />
-          <Icon className="humid" image={this.props.humid_img} />
-            <Value className="humid" value={`${this.props.humid_val}%`}/>
+          <div className="temp" onClick={this.tempSelected}>
+            <Icon image={this.props.temp_img} />
+              <Value value={`${this.props.temp_val}°C`} />
+          </div>
+          <div className="humid" onClick={this.humidSelected}>
+            <Icon image={this.props.humid_img} />
+              <Value value={`${this.props.humid_val}%`}/>
+          </div>
         </row>
         <row>
-          <Icon className="beverage" image={this.props.beverage_img} />
-            <Value className="beverage" value={`${this.props.beverage_val}`} />
-          <Icon className="door" image={this.props.door_img} />
-            <Value className="door" value={this.props.door_val} />
+          <div className="beverage" onClick={this.beverageSelected}>
+            <Icon image={this.props.beverage_img} />
+              <Value value={`${this.props.beverage_val}`} />
+          </div>
+          <div className="door" onClick={this.doorSelected}>
+            <Icon image={this.props.door_img} />
+            <Value value={this.props.door_val} />
+          </div>
         </row>
         <row>
+          {this.props.selected_sensor}
           <Icon />
           <div id="sketch"></div>
           <Icon />
