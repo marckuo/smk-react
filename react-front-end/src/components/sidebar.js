@@ -26,7 +26,7 @@ export default class Sidebar extends Component {
   // doorSelected = () => {
   //   this.props._setDoorSelected();
   // }
-  
+
   _setApiTempTime = (time) => {
     this.props._setApiData('temp', time)
   }
@@ -53,7 +53,7 @@ export default class Sidebar extends Component {
             <Buttons _setApiTime = {this._setApiTempTime} />
           </div>
         </div>
-            
+
         <div className="col-xs-6 col-sm-3 topbtn">
           <div className="button">
             <Icon image={this.props.humid_img} />

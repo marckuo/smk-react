@@ -15,10 +15,10 @@ export default class App extends Component {
 	constructor(props) {
     super(props);
 		  this.state = {
-		    temp_img: "temp.png",
-		    humid_img: "humid.png",
-		    door_img: "door.png",
-		    beverage_img: "beverage.png",
+		    temp_img: "temperature.svg",
+		    humid_img: "humidity.svg",
+		    door_img: "door.svg",
+		    beverage_img: "coffee.svg",
         temp_data_array: [],
         humid_data_array: [],
         door_data_array: [],
@@ -105,7 +105,7 @@ export default class App extends Component {
    //      selected_sensor: "temp",
    //      graph_data_array: self.state.graph_data_array.concat([{x: last_id, y: parseInt(data)}])
 			});
-   
+
 		});
 
 		socket.on('humid', function(data){
@@ -113,8 +113,8 @@ export default class App extends Component {
       self.setState({
 				humid_val: data
 			});
-      
-      
+
+
 		});
 
 		socket.on('beverage', function(data){
@@ -122,7 +122,7 @@ export default class App extends Component {
 			self.setState({
 				beverage_val: data
 			});
-      
+
 		});
 
 		socket.on('door', function(data){
@@ -130,22 +130,22 @@ export default class App extends Component {
 			self.setState({
 				door_val: data
 			});
-      
+
 		});
   }
 
   render() {
 		return (
       <div className="container col-xs-12">
-        
-        <div className="col-xs-12 col-sm-3">
-          
+
+        <div className="col-xs-12 col-sm-2">
+
           <div className="row">
             <div className="col-xs-12 full">
               <Header />
             </div>
           </div>
-          
+
           <div className="row">
             <div className="col-xs-12">
               <Profile />
@@ -160,17 +160,17 @@ export default class App extends Component {
 
         </div>
 
-        <div className="col-xs-12 col-sm-9">
-          
+        <div className="col-xs-12 col-sm-10">
+
           <div className="row top">
           <Sidebar {...this.state}
                   // _setTempSelected={this._setTempSelected}
-                  // _setHumidSelected={this._setHumidSelected} 
-                  // _setBeverageSelected={this._setBeverageSelected} 
+                  // _setHumidSelected={this._setHumidSelected}
+                  // _setBeverageSelected={this._setBeverageSelected}
                   // _setDoorSelected={this._setDoorSelected}
                   _setApiData={this._setApiData} />
           </div>
-          
+
           <div className="row">
             <div className="col-xs-12 graph-container">
               <Body {...this.state}/>
