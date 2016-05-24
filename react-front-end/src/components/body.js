@@ -7,7 +7,7 @@ export default class Body extends Component {
   
   render () {
     return (
-      <div className="col-xs-8">
+      <div className="full">
         <Graph sensor={this.props.selected_sensor} data={this.props.graph_data_array} />
       </div>
     );

@@ -5,7 +5,7 @@ export default class Icon extends Component {
   render() {
     return (
       <div className="icon">
-      <img src={`/src/images/icons/${this.props.image}`} height="50px" width="50px"/>
+      <img src={`/src/images/icons/${this.props.image}`} height="60px" width="60px"/>
       </div>
     )
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import style from '../stylesheets/style.css';
 import Icon from './sidebar/icon';
 import Value from './sidebar/value';
+import Buttons from './sidebar/buttons'
 import Grid from 'react-bootstrap/lib/Grid';
 import axios from 'axios';
 
@@ -10,52 +11,72 @@ export default class Sidebar extends Component {
     super(props);
   }
 
-  tempSelected = () => {
-    this.props._setTempSelected();
+  // tempSelected = () => {
+  //   this.props._setTempSelected();
+  // }
+
+  // humidSelected = () => {
+  //   this.props._setHumidSelected();
+  // }
+
+  // beverageSelected = () => {
+  //   this.props._setBeverageSelected();
+  // }
+
+  // doorSelected = () => {
+  //   this.props._setDoorSelected();
+  // }
+  
+  _setApiTempTime = (time) => {
+    this.props._setApiData('temp', time)
   }
 
-  humidSelected = () => {
-    this.props._setHumidSelected();
+  _setApiHumidTime = (time) => {
+    this.props._setApiData('humid', time)
   }
 
-  beverageSelected = () => {
-    this.props._setBeverageSelected();
+  _setApiBeverageTime = (time) => {
+    this.props._setApiData('beverage', time)
   }
 
-  doorSelected = () => {
-    this.props._setDoorSelected();
+  _setApiDoorTime = (time) => {
+    this.props._setApiData('door', time)
   }
 
   render() {
     return (
-      <div className="col-xs-4">
-        <row>
-          <div className="temp" onClick={this.tempSelected}>
+      <div>
+        <div className="col-xs-6 col-sm-3 topbtn">
+          <div className="button">
             <Icon image={this.props.temp_img} />
-              <Value value={`${this.props.temp_val}°C`} />
+            <Value value={`${this.props.temp_val}°C`} />
+            <Buttons _setApiTime = {this._setApiTempTime} />
           </div>
-          <div className="humid" onClick={this.humidSelected}>
+        </div>
+            
+        <div className="col-xs-6 col-sm-3 topbtn">
+          <div className="button">
             <Icon image={this.props.humid_img} />
-              <Value value={`${this.props.humid_val}%`}/>
+            <Value value={`${this.props.humid_val}%`}/>
+            <Buttons _setApiTime = {this._setApiHumidTime}/>
           </div>
-        </row>
-        <row>
-          <div className="beverage" onClick={this.beverageSelected}>
+        </div>
+
+        <div className="col-xs-6 col-sm-3 topbtn">
+          <div className="button">
             <Icon image={this.props.beverage_img} />
-              <Value value={`${this.props.beverage_val}`} />
+            <Value value={`${this.props.beverage_val}`} />
+            <Buttons _setApiTime = {this._setApiBeverageTime}/>
           </div>
-          <div className="door" onClick={this.doorSelected}>
+        </div>
+
+        <div className="col-xs-6 col-sm-3 topbtn">
+          <div className="button">
             <Icon image={this.props.door_img} />
-            <Value value={this.props.door_val} />
+            <Value value={`${this.props.door_val}`} />
+            <Buttons _setApiTime = {this._setApiDoorTime}/>
           </div>
-        </row>
-        <row>
-          {this.props.selected_sensor}
-          <Icon />
-          <div id="sketch"></div>
-          <Icon />
-          <Value />
-        </row>
+        </div>
       </div>
     )
   }

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import style from '../stylesheets/style.css';
 import Grid from 'react-bootstrap/lib/Grid';
-import Logo from './header/logo';
 
-export default class Header extends Component {
+export default class Profile extends Component {
 
   render() {
     return (
-      <div className="Logo">
-        <Logo />
+      <div className="left">
+      PROFILE
       </div>
     )
   }
