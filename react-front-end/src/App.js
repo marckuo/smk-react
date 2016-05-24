@@ -19,12 +19,15 @@ export default class App extends Component {
 		    humid_img: "humid.png",
 		    door_img: "door.png",
 		    beverage_img: "beverage.png",
-        temp_data_array: [],
-        humid_data_array: [],
-        door_data_array: [],
-        beverage_data_array: [],
+        temp_data_array: null,
+        humid_data_array: null,
+        door_data_array: null,
+        beverage_data_array: null,
         selected_sensor: null,
-        selected_time: null,
+        selected_temp_time: null,
+        selected_humid_time: null,
+        selected_beverage_time: null,
+        selected_door_time: null,
         graph_data_array: null
 		  }
   }
@@ -55,7 +58,7 @@ export default class App extends Component {
     .then(function(res) {
       self.setState({
         humid_val: res.data.value
-      })
+      })  
     })
   }
 
@@ -69,22 +72,101 @@ export default class App extends Component {
     })
   }
 
-  _setApiData = (sensor,time) => {
+  _setApiTempTime = (time) => {
     console.log('api call happening');
-    console.log(sensor,time);
+    console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/${sensor}`)
+    axios.get(`http://localhost:4000/api/history/${time}/temp`)
     .then(function(res) {
       console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
-        ApiRes.push({x:i.id,
-                        y:parseInt(i.value)});
+        ApiRes.push(i);
       })
       self.setState({
-        graph_data_array: ApiRes
+        selected_temp_time: time,
+        temp_data_array: ApiRes
       })
-    });
+    })
+  }
+
+  _setApiHumidTime = (time) => {
+    console.log('api call happening');
+    console.log(time);
+    let self= this;
+    axios.get(`http://localhost:4000/api/history/${time}/humid`)
+    .then(function(res) {
+      console.log(res);
+      const ApiRes = [];
+      res.data.map(function(i){
+        ApiRes.push(i);
+      })
+      self.setState({
+        selected_humid_time: time,
+        humid_data_array: ApiRes
+      })
+    })
+  }
+
+  _setApiBeverageTime = (time) => {
+    console.log('api call happening');
+    console.log(time);
+    let self= this;
+    axios.get(`http://localhost:4000/api/history/${time}/beverage`)
+    .then(function(res) {
+      console.log(res);
+      const ApiRes = [];
+      res.data.map(function(i){
+        ApiRes.push(i);
+      })
+      self.setState({
+        selected_beverage_time: time,
+        beverage_data_array: ApiRes
+      })
+    })
+  }
+
+  _setApiDoorTime = (time) => {
+    console.log('api call happening');
+    console.log(time);
+    let self= this;
+    axios.get(`http://localhost:4000/api/history/${time}/door`)
+    .then(function(res) {
+      console.log(res);
+      const ApiRes = [];
+      res.data.map(function(i){
+        ApiRes.push(i);
+      })
+      self.setState({
+        selected_door_time: time,
+        door_data_array: ApiRes
+      })
+    })
+  }
+
+  _setGraphDataNull = (sensor) => {
+    switch(sensor) {
+      case "temp":
+        this.setState({
+          temp_data_array: null
+        })
+        break;
+      case "humid":
+        this.setState({
+          humid_data_array: null
+        })
+        break;
+      case "beverage":
+        this.setState({
+          beverage_data_array: null
+        })
+        break;
+      case "door":
+        this.setState({
+          door_data_array: null
+        })
+        break;
+    }
   }
 
   componentWillMount(){
@@ -96,7 +178,7 @@ export default class App extends Component {
 
 		socket.on('temp', function(data){
       // let last_id = self.state.temp_data_array.length;
-      console.log("last id", last_id);
+      // console.log("last id", last_id);
 			console.log('this inside socket: ' + data);
    //    self._tempAllApiCall();
    //    self._setTempSelected();
@@ -164,11 +246,11 @@ export default class App extends Component {
           
           <div className="row top">
           <Sidebar {...this.state}
-                  // _setTempSelected={this._setTempSelected}
-                  // _setHumidSelected={this._setHumidSelected} 
-                  // _setBeverageSelected={this._setBeverageSelected} 
-                  // _setDoorSelected={this._setDoorSelected}
-                  _setApiData={this._setApiData} />
+            _setApiTempTime={this._setApiTempTime}
+            _setApiHumidTime={this._setApiHumidTime}
+            _setApiBeverageTime={this._setApiBeverageTime}
+            _setApiDoorTime={this._setApiDoorTime}
+            _setGraphDataNull={this._setGraphDataNull} />
           </div>
           
           <div className="row">

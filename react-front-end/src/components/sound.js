@@ -6,7 +6,7 @@ export default class Sound extends Component {
 
   render() {
     return (
-      <div className="left">
+      <div id="sound" className="left">
       SOUND
       </div>
     )

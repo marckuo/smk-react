@@ -3,13 +3,14 @@ import { render } from 'react-dom';
 import Grid from 'react-bootstrap/lib/Grid';
 import * as V from 'victory';
 
-export default class Graph extends Component {
+export default class TempGraph extends Component {
 
   render() {
     if (this.props.data !== null) {
       return (
-        <div id='graph'>
+        <div id='graph'>               
         <V.VictoryChart>
+          
           <V.VictoryAxis
           label="Time"
           style={{
@@ -32,7 +33,7 @@ export default class Graph extends Component {
           }}
            domain={[0,40]} standalone={false}/>
 
-          <V.VictoryLine 
+          <V.VictoryBar 
           style={{
             data: {
               stroke: "red",
@@ -40,7 +41,19 @@ export default class Graph extends Component {
             }
           }}
            data={this.props.data}
+
+           animate={{
+            onEnter: {
+              duration: 500,
+              before: () => ({
+                y: 0,
+                fill: "white"
+              })
+            }
+          }}
           />
+
+
 
         </V.VictoryChart>
         </div>

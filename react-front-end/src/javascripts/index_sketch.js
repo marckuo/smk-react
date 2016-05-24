@@ -19,6 +19,7 @@ function setup() {
   width = 400;
   var canvas = createCanvas(width, height);
 
+  canvas.parent('sound');
 
   frameRate(10);
   osc = new p5.Oscillator();
