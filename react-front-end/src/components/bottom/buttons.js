@@ -13,9 +13,9 @@ export default class Buttons extends Component {
   render() {
     return (
       <div className="row">
-        <button className="smbutton" onClick = {this._setApiTime.bind(this, 'day')}>D</button>
-        <button className="smbutton" onClick = {this._setApiTime.bind(this, 'week')}>W</button>
-        <button className="smbutton" onClick = {this._setApiTime.bind(this, 'month')}>M</button>
+        <button className="smbutton" onClick = {this._setApiTime.bind(this, 'day')}>DAY</button>
+        <button className="smbutton" onClick = {this._setApiTime.bind(this, 'week')}>WEEK</button>
+        <button className="smbutton" onClick = {this._setApiTime.bind(this, 'month')}>MONTH</button>
       </div>
     )
   }
