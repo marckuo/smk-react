@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import style from './stylesheets/style.css';
-import Bottom from './components/sidebar';
+import Bottom from './components/bottom';
 import Top from './components/top';
-import Body from './components/body';
 import io from 'socket.io-client';
 import Grid from 'react-bootstrap/lib/Grid';
 var socket = io('http://localhost:4000');
@@ -12,20 +11,19 @@ export default class App extends Component {
 	constructor(props) {
     super(props);
 		  this.state = {
-		    temp_img: "temp.png",
-		    humid_img: "humid.png",
-		    door_img: "door.png",
-		    beverage_img: "beverage.png",
-        temp_data_array: null,
-        humid_data_array: null,
-        door_data_array: null,
-        beverage_data_array: null,
+		    temp_img: "temperature.svg",
+		    humid_img: "humidity.svg",
+		    door_img: "door.svg",
+		    beverage_img: "coffee.svg",
+        temp_data_array: [{x:0,y:0}],
+        humid_data_array: [{x:0,y:0}],
+        door_data_array: [{x:0,y:0}],
+        beverage_data_array: [{x:0,y:0}],
         selected_sensor: null,
         selected_temp_time: null,
         selected_humid_time: null,
         selected_beverage_time: null,
-        selected_door_time: null,
-        graph_data_array: null
+        selected_door_time: null
 		  }
   }
 
@@ -189,7 +187,7 @@ export default class App extends Component {
    //      selected_sensor: "temp",
    //      graph_data_array: self.state.graph_data_array.concat([{x: last_id, y: parseInt(data)}])
 			});
-   
+
 		});
 
 		socket.on('humid', function(data){
@@ -197,8 +195,8 @@ export default class App extends Component {
       self.setState({
 				humid_val: data
 			});
-      
-      
+
+
 		});
 
 		socket.on('beverage', function(data){
@@ -206,7 +204,7 @@ export default class App extends Component {
 			self.setState({
 				beverage_val: data
 			});
-      
+
 		});
 
 		socket.on('door', function(data){
@@ -214,7 +212,7 @@ export default class App extends Component {
 			self.setState({
 				door_val: data
 			});
-      
+
 		});
   }
 

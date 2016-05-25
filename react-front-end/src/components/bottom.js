@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import style from '../stylesheets/style.css';
 import Icon from './bottom/icon';
 import Value from './bottom/value';
-import Buttons from './bottom/buttons'
+import Buttons from './bottom/buttons';
 import Grid from 'react-bootstrap/lib/Grid';
 import axios from 'axios';
 import TempGraph from './graphs/tempgraph'
