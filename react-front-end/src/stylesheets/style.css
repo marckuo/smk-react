@@ -1,9 +1,26 @@
+html{
+  margin: 0;
+  height:100%;
+  width:100%;
+}
+
 body {
   margin: 0;
   height:100%;
   width:100%;
 }
 
+.logo {
+  height:300px;
+}
+
+.sound {
+  height:300px;
+}
+
+.profile {
+  height:300px;
+}
 .logodiv {
   display:flex;
   justify-content: center;
@@ -48,41 +65,63 @@ body {
   align-content: center;
 }
 
+.row.h-center.v-center {
+  margin-bottom: 5px
+}
+
 .sbs {
   float:left;
 }
 
+.flex-height {
+  height:100%;
+}
+
+.flex-height-child {
+  height:100% ;
+}
+
 .bluebg-dark {
   background: #143167;
+  /*background: #0785A9;*/
 }
 
 .bluebg-darker {
   background: #0D2045;
+  /*background: #034D61;*/
 }
 
 .bluebg {
   background: #1d4998;
+  /*background: #0CA7D2;*/
 }
 
 .bluebg-light {
   background: #2761CE;
+  /*background: #034D61;*/
 }
 
 .bluebg-lighter {
   background: #5484DE;
+  /*background: #0CA7D2;*/
 }
 
 .icon {
     
 }
 
+/*.svgicons > svg {
+  fill:white;
+}*/
+
 .value {
   float:left;
   font-family:Source Sans Pro;
   font-size:1.5em;
   text-align: center;
-  vertical-align: center;
-
+  vertical-align: middle;
+  width:60px;
+  height:60px;
 }
 
 .graph-container {
@@ -119,7 +158,7 @@ body {
 .smbutton {
   font-family: arial;
   color: #14396A !important;
-  font-size: 14px;
+  font-size: 9px;
   text-shadow: 1px 1px 0px #7CACDE;
   padding: 2px 5px;
   margin-left:1px;
@@ -127,7 +166,7 @@ body {
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
   border-radius: 40px;
-  border: 2px solid #3866A3;
+  border: 1px solid #3866A3;
   background: #63B8EE;
   background: linear-gradient(top,  #63B8EE,  #468CCF);
   background: -ms-linear-gradient(top,  #63B8EE,  #468CCF);

@@ -19,11 +19,12 @@ export default class App extends Component {
         humid_data_array: [{x:0,y:0}],
         door_data_array: [{x:0,y:0}],
         beverage_data_array: [{x:0,y:0}],
+        sound_val: [{x:0,y:0}],
         selected_sensor: null,
         selected_temp_time: null,
         selected_humid_time: null,
         selected_beverage_time: null,
-        selected_door_time: null
+        selected_door_time: null,
 		  }
   }
 
@@ -214,13 +215,26 @@ export default class App extends Component {
 			});
 
 		});
-  }
+
+
+		socket.on('sound', function(data){
+
+
+		  var spectrumMap = data.map(function(num, index){
+		   return {'x': index + 1, 'y': num};
+		  });
+			self.setState({
+				sound_val: spectrumMap
+			});
+		});
+
+	}
 
   render() {
 		return (
-      <div className="container">
+      <div>
         <div>
-          <Top />
+          <Top {...this.state} />
         </div>
         <div>
           <Bottom {...this.state}

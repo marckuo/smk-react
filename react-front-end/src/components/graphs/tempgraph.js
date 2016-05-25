@@ -5,14 +5,31 @@ import * as V from 'victory';
 
 export default class TempGraph extends Component {
 
+
+
   render() {
+    var time = ""
+    switch (this.props.time) {
+      case "day":
+        time = "HOURS"
+        break;
+      case "week":
+        time = "DAYS"
+        break;
+      case "month":
+        time = "DAYS"
+        break;
+    }
+
+    console.log(this.props.data);
+
     if (this.props.data !== null) {
       return (
         <div id='graph'>               
         <V.VictoryChart>
           
           <V.VictoryAxis
-          label="Time"
+          label= {time}
           style={{
             axis: {stroke: "white"},
             grid: {strokeWidth: 2},
@@ -37,7 +54,7 @@ export default class TempGraph extends Component {
           style={{
             data: {
               stroke: "white",
-              strokeWidth: 1,
+              strokeWidth: 2,
               fill: "#2761CE"
             }
           }}

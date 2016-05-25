@@ -5,7 +5,7 @@ import style from '../../stylesheets/style.css';
 export default class Value extends Component {
   render() {
     return (
-      <div className="col-xs-6 sbs h-center v-center value">
+      <div className="value h-center v-center">
       	{this.props.value}
       </div>
     )

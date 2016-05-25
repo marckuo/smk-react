@@ -36,8 +36,7 @@ export default class BeverageGraph extends Component {
           <V.VictoryBar 
           style={{
             data: {
-              stroke: "red",
-              strokeWidth: 3
+              fill: "white"
             }
           }}
            data={this.props.data}

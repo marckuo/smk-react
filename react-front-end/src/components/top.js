@@ -17,7 +17,7 @@ export default class Top extends Component {
             <Profile />
         </div>
         <div className="col-xs-12 col-sm-3 bluebg-lighter white-txt">
-            <Sound />
+            <Sound value={this.props.sound_val} />
         </div>    
       </div>
     )

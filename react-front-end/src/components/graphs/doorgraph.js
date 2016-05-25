@@ -9,7 +9,7 @@ export default class DoorGraph extends Component {
     if (this.props.data !== null) {
       return (
         <div id='graph'>               
-        <V.VictoryChart>
+          <V.VictoryChart>
           
           <V.VictoryAxis
           label="Time"
@@ -36,8 +36,7 @@ export default class DoorGraph extends Component {
           <V.VictoryBar 
           style={{
             data: {
-              stroke: "red",
-              strokeWidth: 3
+              fill: "white"
             }
           }}
            data={this.props.data}

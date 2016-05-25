@@ -38,21 +38,21 @@ export default class Sidebar extends Component {
 
   render() {
     return (
-      <div>
-        <div className="col-xs-12 col-sm-3 bluebg-dark">
+      <div className="flex-height">
+        <div className="col-xs-12 col-sm-3 bluebg-dark" id="flex-height-child">
           <div className="button">
             <div className="row h-center v-center">
               <div>
                 <Icon image={this.props.temp_img} />
               </div>
-              <div>
+              <div className="h-center v-center">
                 <Value value={`${this.props.temp_val}°C`} />
               </div>
             </div>
             <div className="row">
               <Buttons _setApiTime = {this.props._setApiTempTime} />
             </div>
-            <TempGraph time={this.props.select_temp_time} data={this.props.temp_data_array} />
+            <TempGraph time={this.props.selected_temp_time} data={this.props.temp_data_array} />
           </div>
         </div>
             
@@ -69,7 +69,7 @@ export default class Sidebar extends Component {
             <div className="row">
               <Buttons _setApiTime = {this.props._setApiHumidTime} />
             </div>
-            <HumidGraph time={this.props.select_humid_time} data={this.props.humid_data_array} />
+            <HumidGraph time={this.props.selected_humid_time} data={this.props.humid_data_array} />
           </div>
         </div>
 
@@ -86,7 +86,7 @@ export default class Sidebar extends Component {
             <div className="row">
               <Buttons _setApiTime = {this.props._setApiBeverageTime} />
             </div>
-            <BeverageGraph time={this.props.select_beverage_time} data={this.props.beverage_data_array} />
+            <BeverageGraph time={this.props.selected_beverage_time} data={this.props.beverage_data_array} />
           </div>
         </div>
 
@@ -103,7 +103,7 @@ export default class Sidebar extends Component {
             <div className="row">
               <Buttons _setApiTime = {this.props._setApiDoorTime} />
             </div>
-            <DoorGraph time={this.props.select_door_time} data={this.props.door_data_array} />
+            <DoorGraph time={this.props.selected_door_time} data={this.props.door_data_array} />
           </div>
         </div>
       </div>
