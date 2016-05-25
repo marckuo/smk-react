@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import style from './stylesheets/style.css';
-import Sidebar from './components/sidebar';
-import Header from './components/header';
-import Sound from './components/sound';
-import Profile from './components/profile';
+import Bottom from './components/sidebar';
+import Top from './components/top';
 import Body from './components/body';
-
 import io from 'socket.io-client';
 import Grid from 'react-bootstrap/lib/Grid';
 var socket = io('http://localhost:4000');
@@ -72,7 +69,7 @@ export default class App extends Component {
     })
   }
 
-  _setApiTempTime = (time) => {
+  _setApiTempTime = (time="day") => {
     console.log('api call happening');
     console.log(time);
     let self= this;
@@ -90,7 +87,7 @@ export default class App extends Component {
     })
   }
 
-  _setApiHumidTime = (time) => {
+  _setApiHumidTime = (time="day") => {
     console.log('api call happening');
     console.log(time);
     let self= this;
@@ -108,7 +105,7 @@ export default class App extends Component {
     })
   }
 
-  _setApiBeverageTime = (time) => {
+  _setApiBeverageTime = (time="day") => {
     console.log('api call happening');
     console.log(time);
     let self= this;
@@ -126,7 +123,7 @@ export default class App extends Component {
     })
   }
 
-  _setApiDoorTime = (time) => {
+  _setApiDoorTime = (time="day") => {
     console.log('api call happening');
     console.log(time);
     let self= this;
@@ -144,36 +141,41 @@ export default class App extends Component {
     })
   }
 
-  _setGraphDataNull = (sensor) => {
-    switch(sensor) {
-      case "temp":
-        this.setState({
-          temp_data_array: null
-        })
-        break;
-      case "humid":
-        this.setState({
-          humid_data_array: null
-        })
-        break;
-      case "beverage":
-        this.setState({
-          beverage_data_array: null
-        })
-        break;
-      case "door":
-        this.setState({
-          door_data_array: null
-        })
-        break;
-    }
-  }
+  // _setGraphDataNull = (sensor) => {
+  //   switch(sensor) {
+  //     case "temp":
+  //       this.setState({
+  //         temp_data_array: null
+  //       })
+  //       break;
+  //     case "humid":
+  //       this.setState({
+  //         humid_data_array: null
+  //       })
+  //       break;
+  //     case "beverage":
+  //       this.setState({
+  //         beverage_data_array: null
+  //       })
+  //       break;
+  //     case "door":
+  //       this.setState({
+  //         door_data_array: null
+  //       })
+  //       break;
+  //   }
+  // }
 
   componentWillMount(){
   	this._tempApiCall();
     this._humidApiCall();
     this._beverageApiCall();
     this._doorApiCall();
+    this._setApiTempTime();
+    this._setApiHumidTime();
+    this._setApiBeverageTime();
+    this._setApiDoorTime();
+
 		let self= this;
 
 		socket.on('temp', function(data){
@@ -218,49 +220,19 @@ export default class App extends Component {
 
   render() {
 		return (
-      <div className="container col-xs-12">
-        
-        <div className="col-xs-12 col-sm-3">
-          
-          <div className="row">
-            <div className="col-xs-12 full">
-              <Header />
-            </div>
-          </div>
-          
-          <div className="row">
-            <div className="col-xs-12">
-              <Profile />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-xs-12">
-              <Sound />
-            </div>
-          </div>
-
+      <div className="container">
+        <div>
+          <Top />
         </div>
-
-        <div className="col-xs-12 col-sm-9">
-          
-          <div className="row top">
-          <Sidebar {...this.state}
-            _setApiTempTime={this._setApiTempTime}
-            _setApiHumidTime={this._setApiHumidTime}
-            _setApiBeverageTime={this._setApiBeverageTime}
-            _setApiDoorTime={this._setApiDoorTime}
-            _setGraphDataNull={this._setGraphDataNull} />
-          </div>
-          
-          <div className="row">
-            <div className="col-xs-12 graph-container">
-              <Body {...this.state}/>
-            </div>
-          </div>
-
+        <div>
+          <Bottom {...this.state}
+          _setApiTempTime={this._setApiTempTime}
+          _setApiHumidTime={this._setApiHumidTime}
+          _setApiBeverageTime={this._setApiBeverageTime}
+          _setApiDoorTime={this._setApiDoorTime} />
         </div>
       </div>
+
 			);
 		}
 	}

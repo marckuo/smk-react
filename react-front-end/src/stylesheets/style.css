@@ -1,24 +1,25 @@
 body {
   margin: 0;
-  background: #1d4998;
-  background-size: no-repeat cover;
   height:100%;
   width:100%;
+}
+
+.logodiv {
+  display:flex;
+  justify-content: center;
 }
 
 .root {
 	z-index: 1;
 }
 
-.full {
-  width:100%;
-  margin:0 auto;
-  padding:0;
+.white-txt {
+  font-family:Source Sans Pro;
+  font-size:1.5em;
+  color:white;
 }
 
 .container {
-  background: #1d4998;
-  background-size: cover;
 	margin:0;
   padding:0;
   width:100%;
@@ -27,51 +28,61 @@ body {
 	z-index:997;
 }
 
-.top {
-  
-}
-
-.left {
+#time {
   font-family:Source Sans Pro;
-  font-size:1.5em;
+  font-size:7em;
   color:white;
-  background: rgba(192,192,192,0.4);
-  padding:10px;
-  margin:1px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  word-wrap: break-word;
-}
-
-.logo {
-  display:inline-flex;
-  padding:0;
-}
-
-#graph {
-  background: rgba(192,192,192,0.6);
-  border-radius: 10px;
-  width:100%;
-  height:100%;
-  padding:5px;
 }
 
 #sketch {
 	z-index:0;
 }
 
-#logo {
-	width:200px;
-	height:120px;
-	padding:10px;
+.h-center {
+  display:flex;
+  justify-content: center;
+}
+
+.v-center {
+  display:flex;
+  align-content: center;
+}
+
+.sbs {
+  float:left;
+}
+
+.bluebg-dark {
+  background: #143167;
+}
+
+.bluebg-darker {
+  background: #0D2045;
+}
+
+.bluebg {
+  background: #1d4998;
+}
+
+.bluebg-light {
+  background: #2761CE;
+}
+
+.bluebg-lighter {
+  background: #5484DE;
+}
+
+.icon {
+    
 }
 
 .value {
+  float:left;
   font-family:Source Sans Pro;
   font-size:1.5em;
-}
+  text-align: center;
+  vertical-align: center;
 
-.test {
 }
 
 .graph-container {
@@ -101,15 +112,8 @@ body {
   margin-right:auto;
   position:relative;
   cursor:pointer;
-  
   background-image: linear-gradient(bottom, rgb(14,137,182) 0%, rgb(22,179,236) 100%);
   border-radius: 5px;
-}
-
-.col-xs-12.col-sm-3.topbtn {
-  padding-left:10px;
-  padding-right:10px;
-  padding-bottom:4px;
 }
 
 .smbutton {
@@ -130,6 +134,7 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(#63B8EE), to(#468CCF));
   background: -moz-linear-gradient(top,  #63B8EE,  #468CCF);
 }
+
 .smbutton:hover {
   color: #14396A !important;
   background: #468CCF;

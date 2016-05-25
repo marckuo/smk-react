@@ -14,22 +14,22 @@ export default class BeverageGraph extends Component {
           <V.VictoryAxis
           label="Time"
           style={{
-            axis: {stroke: "black"},
+            axis: {stroke: "white"},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "black"},
-            tickLabels: {fontSize: 15, fill:"black"},
-            axisLabel: {fill:"black"}
+            ticks: {stroke: "white"},
+            tickLabels: {fontSize: 15, fill:"white"},
+            axisLabel: {fill:"white"}
 
           }}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
           label="Cups of Beverages"
           style={{
-            axis: {stroke: "black"},
+            axis: {stroke: "white"},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "black  "},
-            tickLabels: {fontSize: 15, fill:"black"},
-            axisLabel: {fill:"black"}
+            ticks: {stroke: "white"},
+            tickLabels: {fontSize: 15, fill:"white"},
+            axisLabel: {fill:"white"}
           }}
            domain={[0,40]} standalone={false}/>
 
