@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg3140" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" sodipodi:docname="door.svg" inkscape:version="0.48.4 r9939"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="612px" height="792px"
+	 viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+<g id="g3142" transform="translate(-8,-0.46076952)">
+	<g id="g3144">
+		<path id="path3146" inkscape:connector-curvature="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" d="
+			M566.555,792.461H61.445c-10.102,0-16.837-6.734-16.837-16.837V17.958c0-10.102,6.735-16.837,16.837-16.837h505.11
+			c10.103,0,16.838,6.735,16.838,16.837v757.666C583.393,785.726,576.657,792.461,566.555,792.461z M78.282,758.787h471.436V34.795
+			H78.282V758.787z"/>
+	</g>
+	<g id="g3148">
+		<path id="path3150" inkscape:connector-curvature="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" d="
+			M566.555,792.461c-1.684,0-3.367,0-5.051,0L191.09,691.438c-6.735-1.684-11.786-8.418-11.786-16.837V118.98
+			c0-8.418,5.051-13.47,11.786-16.837L561.504,1.121c5.051-1.684,10.103,0,15.153,3.367c5.052,3.368,6.735,8.418,6.735,13.47
+			v757.666c0,5.051-1.684,10.103-6.735,13.47C573.29,790.777,569.923,792.461,566.555,792.461z M212.978,662.816l336.74,90.919
+			V39.846l-336.74,90.92V662.816z"/>
+	</g>
+	<g id="g3152">
+		
+			<rect id="rect3154" x="246.652" y="379.954" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" width="67.348" height="33.674"/>
+	</g>
+</g>
+</svg>
