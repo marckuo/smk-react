@@ -47,6 +47,10 @@
     "react": "^0.14.6",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^0.14.6",
-    "style-loader": "^0.13.1"
+    "react-socket": "^0.1.4",
+    "socket.io": "^1.4.6",
+    "socket.io-client": "^1.4.6",
+    "style-loader": "^0.13.1",
+    "victory": "^0.7.0"
   }
 }
