@@ -20,68 +20,62 @@ export default class TempGraph extends Component {
         time = "DAYS"
         break;
     }
-
-    console.log(this.props.data);
-
-    if (this.props.data !== null) {
+     
       return (
         <div id='graph'>               
-        <V.VictoryChart>
+          <V.VictoryChart>
           
           <V.VictoryAxis
           label= {time}
           style={{
-            axis: {stroke: "white"},
+            axis: {stroke: "#EC334D"},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
+            ticks: {stroke: "#EC334D"},
+            tickLabels: {fontSize: 15, fill:"#EC334D"},
+            axisLabel: {fill:"#EC334D"}
 
           }}
+          tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="Temperature"
+          label="Temperature (°C)"
           style={{
-            axis: {stroke: "white"},
+            axis: {stroke: "#EC334D"},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
+            ticks: {stroke: "#EC334D"},
+            tickLabels: {fontSize: 15, fill:"#EC334D"},
+            axisLabel: {fontSize:15, fill:"#EC334D"}
           }}
+            tickCount={5}
            domain={[0,40]} standalone={false}/>
 
-          <V.VictoryLine 
+          <V.VictoryBar
+          
           style={{
             data: {
-              stroke: "white",
-              strokeWidth: 2,
-              fill: "#2761CE"
-            }
-          }}
-           data={this.props.data}
+              // stroke: "#EC334D",
+              // strokeWidth: 5,
+              fill: "#EC334D",
+              label: {size: 20},
+              symbol: {size:20}
 
-           animate={{
-            onEnter: {
-              duration: 500,
-              before: () => ({
-                y: 0,
-                fill: "white"
-              })
             }
+
           }}
+          data={this.props.data}
+          // labels={this.props.data.y}
+          // symbol={"circle"}
+          // size={8}
+           // symbol={"Square"}
+           animate={{duration:1500}}
+            
+          
           />
-
-
-
         </V.VictoryChart>
         </div>
       );
-    }
-    else {
-        return (
-          <div>
-          </div>
-        );
-    }
+    
   }
 }
+
+        

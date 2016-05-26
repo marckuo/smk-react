@@ -11,20 +11,24 @@ export default class App extends Component {
 	constructor(props) {
     super(props);
 		  this.state = {
-		    temp_img: "temperature.svg",
+        temp_img: "temperature.svg",
 		    humid_img: "humidity.svg",
 		    door_img: "door.svg",
 		    beverage_img: "coffee.svg",
+        profile_img: "profile.svg",
+        sound_img: "sound.svg",
         temp_data_array: [{x:0,y:0}],
         humid_data_array: [{x:0,y:0}],
         door_data_array: [{x:0,y:0}],
         beverage_data_array: [{x:0,y:0}],
-        sound_val: [{x:0,y:0}],
+        sound_data_array: [{x:0,y:0}],
+        profile_data_array: [{x:0,y:0}],
         selected_sensor: null,
         selected_temp_time: null,
         selected_humid_time: null,
         selected_beverage_time: null,
         selected_door_time: null,
+        selected_profile_time: null,
 		  }
   }
 
@@ -68,6 +72,16 @@ export default class App extends Component {
     })
   }
 
+  _profileApiCall= () => {
+    let self= this;
+    axios.get(`http://localhost:4000/api/signed_in`)
+    .then(function(res) {
+      self.setState({
+        profile_val: res.data
+      })
+    })
+  }
+
   _setApiTempTime = (time="day") => {
     console.log('api call happening');
     console.log(time);
@@ -87,12 +101,12 @@ export default class App extends Component {
   }
 
   _setApiHumidTime = (time="day") => {
-    console.log('api call happening');
-    console.log(time);
+    // console.log('api call happening');
+    // console.log(time);
     let self= this;
     axios.get(`http://localhost:4000/api/history/${time}/humid`)
     .then(function(res) {
-      console.log(res);
+      // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
         ApiRes.push(i);
@@ -105,12 +119,12 @@ export default class App extends Component {
   }
 
   _setApiBeverageTime = (time="day") => {
-    console.log('api call happening');
-    console.log(time);
+    // console.log('api call happening');
+    // console.log(time);
     let self= this;
     axios.get(`http://localhost:4000/api/history/${time}/beverage`)
     .then(function(res) {
-      console.log(res);
+      // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
         ApiRes.push(i);
@@ -123,12 +137,12 @@ export default class App extends Component {
   }
 
   _setApiDoorTime = (time="day") => {
-    console.log('api call happening');
-    console.log(time);
+    // console.log('api call happening');
+    // console.log(time);
     let self= this;
     axios.get(`http://localhost:4000/api/history/${time}/door`)
     .then(function(res) {
-      console.log(res);
+      // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
         ApiRes.push(i);
@@ -140,29 +154,22 @@ export default class App extends Component {
     })
   }
 
-  // _setGraphDataNull = (sensor) => {
-  //   switch(sensor) {
-  //     case "temp":
-  //       this.setState({
-  //         temp_data_array: null
-  //       })
-  //       break;
-  //     case "humid":
-  //       this.setState({
-  //         humid_data_array: null
-  //       })
-  //       break;
-  //     case "beverage":
-  //       this.setState({
-  //         beverage_data_array: null
-  //       })
-  //       break;
-  //     case "door":
-  //       this.setState({
-  //         door_data_array: null
-  //       })
-  //       break;
-  //   }
+  // _setApiProfileTime = (time="day") => {
+  //   // console.log('api call happening');
+  //   // console.log(time);
+  //   let self= this;
+  //   axios.get(`http://localhost:4000/api/history/${time}/profile`)
+  //   .then(function(res) {
+  //     // console.log(res);
+  //     const ApiRes = [];
+  //     res.data.map(function(i){
+  //       ApiRes.push(i);
+  //     })
+  //     self.setState({
+  //       selected_profile_time: time,
+  //       profile_data_array: ApiRes
+  //     })
+  //   })
   // }
 
   componentWillMount(){
@@ -170,6 +177,7 @@ export default class App extends Component {
     this._humidApiCall();
     this._beverageApiCall();
     this._doorApiCall();
+    this._profileApiCall();
     this._setApiTempTime();
     this._setApiHumidTime();
     this._setApiBeverageTime();
@@ -188,7 +196,6 @@ export default class App extends Component {
    //      selected_sensor: "temp",
    //      graph_data_array: self.state.graph_data_array.concat([{x: last_id, y: parseInt(data)}])
 			});
-
 		});
 
 		socket.on('humid', function(data){
@@ -196,8 +203,6 @@ export default class App extends Component {
       self.setState({
 				humid_val: data
 			});
-
-
 		});
 
 		socket.on('beverage', function(data){
@@ -205,7 +210,6 @@ export default class App extends Component {
 			self.setState({
 				beverage_val: data
 			});
-
 		});
 
 		socket.on('door', function(data){
@@ -216,17 +220,22 @@ export default class App extends Component {
 
 		});
 
-
 		socket.on('sound', function(data){
-
 
 		  var spectrumMap = data.map(function(num, index){
 		   return {'x': index + 1, 'y': num};
 		  });
 			self.setState({
-				sound_val: spectrumMap
+				sound_data_array: spectrumMap
 			});
 		});
+
+    socket.on('member', function(data){
+      console.log('this inside socket: ' + data);
+      self.setState({
+        profile_val: data
+      });
+    });
 
 	}
 
@@ -241,7 +250,9 @@ export default class App extends Component {
           _setApiTempTime={this._setApiTempTime}
           _setApiHumidTime={this._setApiHumidTime}
           _setApiBeverageTime={this._setApiBeverageTime}
-          _setApiDoorTime={this._setApiDoorTime} />
+          _setApiDoorTime={this._setApiDoorTime}
+          // _setApiProfileTime={this._setApiProfileTime} 
+          />
         </div>
       </div>
 

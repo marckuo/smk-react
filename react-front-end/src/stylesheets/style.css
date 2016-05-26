@@ -11,7 +11,7 @@ body {
 }
 
 .logo {
-  height:300px;
+
 }
 
 .sound {
@@ -23,17 +23,28 @@ body {
 }
 .logodiv {
   display:flex;
-  justify-content: center;
+}
+
+.logodiv img {
+  padding-bottom:10px;
 }
 
 .root {
 	z-index: 1;
 }
 
+.sensor {
+  padding: 20px;
+}
+
+.react-sensor-div {
+  padding: 10px;
+}
+
 .white-txt {
   font-family:Source Sans Pro;
-  font-size:1.5em;
-  color:white;
+  font-size:2.5em;
+  color:#1D4998;
 }
 
 .container {
@@ -65,6 +76,10 @@ body {
   align-content: center;
 }
 
+.row {
+  margin:0;
+}
+
 .row.h-center.v-center {
   margin-bottom: 5px
 }
@@ -81,38 +96,71 @@ body {
   height:100% ;
 }
 
-.bluebg-dark {
-  background: #143167;
-  /*background: #0785A9;*/
-}
-
-.bluebg-darker {
-  background: #0D2045;
-  /*background: #034D61;*/
+.col-xs-12.logodiv.bluebg {
+  margin:0;
+  padding-left:5px;
 }
 
 .bluebg {
-  background: #1d4998;
-  /*background: #0CA7D2;*/
+  background: #1D4998;
 }
 
-.bluebg-light {
-  background: #2761CE;
-  /*background: #034D61;*/
+.sensor-bg-blue {
+  margin:0;
+  padding:0;
+  /*background:#3670D2;*/
+  /*box-shadow: 10px 10px 10px #888888;*/
+  box-shadow: 1px 1px 10px #888888;
 }
 
-.bluebg-lighter {
-  background: #5484DE;
-  /*background: #0CA7D2;*/
+.sensor-bg-green {
+  margin:0;
+  padding:0;
+  /*background:#0BAC45;*/
+  /*box-shadow: 10px 10px 10px #888888;*/
+  box-shadow: 1px 1px 10px #888888;
+}
+
+.sensor-bg-red {
+  margin:0;
+  padding:0;
+  /*background:#E21832;*/
+  /*box-shadow: 10px 10px 10px #888888;*/
+  box-shadow: 1px 1px 10px #888888;
+}
+
+.sensor-bg-purple {
+  margin:0;
+  padding:0;
+  /*background:#8B4CDB;*/
+  /*box-shadow: 10px 10px 10px #888888;*/
+  box-shadow: 1px 1px 10px #888888;
+}
+
+.sensor-bg-pink {
+  margin:0;
+  padding:0;
+  /*background:#E96294;*/
+ /*box-shadow: 10px 10px 10px #888888;*/
+ box-shadow: 1px 1px 10px #888888;
+}
+
+.sensor-bg-yellow {
+  margin:0;
+  padding:0;
+  /*background:#FBD046;*/
+  /*box-shadow: 10px 10px 10px #888888;*/
+  box-shadow: 1px 1px 15px #888888;
 }
 
 .icon {
     
 }
 
-/*.svgicons > svg {
-  fill:white;
-}*/
+
+.buttons {
+
+}
 
 .value {
   float:left;
@@ -157,21 +205,19 @@ body {
 
 .smbutton {
   font-family: arial;
-  color: #14396A !important;
-  font-size: 9px;
-  text-shadow: 1px 1px 0px #7CACDE;
-  padding: 2px 5px;
-  margin-left:1px;
-  margin-right:1px;
-  -moz-border-radius: 40px;
-  -webkit-border-radius: 40px;
-  border-radius: 40px;
-  border: 1px solid #3866A3;
-  background: #63B8EE;
-  background: linear-gradient(top,  #63B8EE,  #468CCF);
-  background: -ms-linear-gradient(top,  #63B8EE,  #468CCF);
-  background: -webkit-gradient(linear, left top, left bottom, from(#63B8EE), to(#468CCF));
-  background: -moz-linear-gradient(top,  #63B8EE,  #468CCF);
+  color: white !important;
+  font-size: 15px;
+  height:100%;
+  /*text-shadow: 1px 1px 0px #7CACDE;*/
+  padding: 5px;
+  margin-left:2px;
+  margin-right:2px;
+  border: 1px solid #1D4998;
+  background: #1D4998;
+  /*background: linear-gradient(top,  #63B8EE,  #468CCF);*/
+  /*background: -ms-linear-gradient(top,  #63B8EE,  #468CCF);*/
+  /*background: -webkit-gradient(linear, left top, left bottom, from(#63B8EE), to(#468CCF));*/
+  /*background: -moz-linear-gradient(top,  #63B8EE,  #468CCF);*/
 }
 
 .smbutton:hover {

@@ -6,50 +6,59 @@ import * as V from 'victory';
 export default class HumidGraph extends Component {
 
   render() {
-    if (this.props.data !== null) {
+    var time = ""
+    switch (this.props.time) {
+      case "day":
+        time = "Today"
+        break;
+      case "week":
+        time = "This Week"
+        break;
+      case "month":
+        time = "This Month"
+        break;
+    }
+
       return (
         <div id='graph'>               
         <V.VictoryChart>
           
           <V.VictoryAxis
-          label="Time"
+          label= {time}
           style={{
-            axis: {stroke: "white"},
+            axis: {stroke: "#3670D2"},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
+            ticks: {stroke: "#3670D2"},
+            tickLabels: {fontSize: 15, fill:"#3670D2"},
+            axisLabel: {fill:"#3670D2"}
 
           }}
+          tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="Humidity"
+          label="Humidity (%)"
           style={{
-            axis: {stroke: "white"},
+            axis: {stroke: "#3670D2"},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
+            ticks: {stroke: "#3670D2"},
+            tickLabels: {fontSize: 15, fill:"#3670D2"},
+            axisLabel: {fontSize: 15, fill:"#3670D2"}
           }}
-           domain={[0,40]} standalone={false}/>
+          // tickCount={4}
+          // domain={[0,100]}
+          standalone={false}/>
 
-          <V.VictoryBar 
+          <V.VictoryLine 
           style={{
             data: {
-              fill: "white"
+              stroke: "#3670D2",
+              strokeWidth: 5,
+              // fill: "#3670D2"
             }
           }}
            data={this.props.data}
 
-           animate={{
-            onEnter: {
-              duration: 500,
-              before: () => ({
-                y: 0,
-                fill: "white"
-              })
-            }
-          }}
+           animate={{duration:500}}
           />
 
 
@@ -57,12 +66,5 @@ export default class HumidGraph extends Component {
         </V.VictoryChart>
         </div>
       );
-    }
-    else {
-        return (
-          <div>
-          </div>
-        );
-    }
   }
 }

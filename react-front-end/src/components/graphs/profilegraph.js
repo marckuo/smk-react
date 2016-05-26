@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
+import style from '../../stylesheets/style.css';
 import Grid from 'react-bootstrap/lib/Grid';
 import * as V from 'victory';
 
-export default class BeverageGraph extends Component {
-
+export default class ProfileGraph extends Component {
   render() {
     var time = ""
     switch (this.props.time) {
@@ -22,26 +21,25 @@ export default class BeverageGraph extends Component {
     return (
       <div>
         <V.VictoryChart>
-          
           <V.VictoryAxis
           label={time}
           style={{
-            axis: {stroke: "#E96294"},
+            axis: {stroke: "#8B4CDB"},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "#E96294"},
-            tickLabels: {fontSize: 15, fill:"#E96294"},
-            axisLabel: {fill:"#E96294"}
+            ticks: {stroke: "#8B4CDB"},
+            tickLabels: {fontSize: 15, fill:"#8B4CDB"},
+            axisLabel: {fill:"#8B4CDB"}
           }}
           tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="Beverages (# of cups)"
+          label="Users Signed On"
           style={{
-            axis: {stroke: "#E96294"},
+            axis: {stroke: "#8B4CDB"},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "#E96294"},
-            tickLabels: {fontSize: 15, fill:"#E96294"},
-            axisLabel: {fontSize: 15, fill:"#E96294"}
+            ticks: {stroke: "#8B4CDB"},
+            tickLabels: {fontSize: 15, fill:"#8B4CDB"},
+            axisLabel: {fontSize: 15, fill:"#8B4CDB"}
           }}
           tickCount={0}
            domain={[0,40]} standalone={false}/>
@@ -49,7 +47,7 @@ export default class BeverageGraph extends Component {
           <V.VictoryBar
           style={{
             data: {
-              fill: "#E96294"
+              fill: "#8B4CDB"
             }
           }}
            data={this.props.data}
@@ -59,7 +57,7 @@ export default class BeverageGraph extends Component {
               duration: 500,
               before: () => ({
                 y: 0,
-                fill: "#E96294"
+                fill: "#8B4CDB"
               })
             }
           }}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from '../../stylesheets/style.css';
+import style from './../../../stylesheets/style.css';
 
 export default class Buttons extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class Buttons extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="h-center v-center buttons">
         <button className="smbutton" onClick = {this._setApiTime.bind(this, 'day')}>DAY</button>
         <button className="smbutton" onClick = {this._setApiTime.bind(this, 'week')}>WEEK</button>
         <button className="smbutton" onClick = {this._setApiTime.bind(this, 'month')}>MONTH</button>
