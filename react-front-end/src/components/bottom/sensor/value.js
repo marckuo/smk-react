@@ -16,15 +16,15 @@ export default class Value extends Component {
           : null
           }{
             (this.props.name && this.props.name === "door")
-          ? <span className="unit">TIMES</span>
+          ? <span className="unit"> TIMES</span>
           : null
           }{
             (this.props.name && this.props.name === "beverage")
-          ? <span className="unit">CUPS</span>
+          ? <span className="unit"> CUPS</span>
           : null
           }{
             (this.props.name && this.props.name === "member")
-          ? <span className="unit">USERS</span>
+          ? <span className="unit"> USERS</span>
           : null
           }
       </div>

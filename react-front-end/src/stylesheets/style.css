@@ -16,9 +16,9 @@ body {
    -webkit-flex-direction: row;
    flex-direction: row;
    -webkit-align-items: center;
-   align-items: center;
+   /*align-items: center;*/
    -webkit-justify-content: center;
-   justify-content: center;
+   /*justify-content: center;*/
 }
 
 .logodiv {
@@ -82,7 +82,7 @@ body {
 }
 
 .bluebg {
-  background: #1D4998;
+  background: #333333;
 }
 
 .sensor-bg-blue {
@@ -165,12 +165,10 @@ body {
 }
 
 .icon {
-  flex:1;
 }
 
-
 .buttons {
-  flex:2;
+  text-align:right;
 }
 
 .value {
@@ -180,7 +178,8 @@ body {
   font-size:2.5em;
   text-align: left;
   vertical-align: middle;
-  flex:2;
+  flex:1;
+  padding-left:10px;
 }
 
 .unit {
@@ -190,7 +189,6 @@ body {
   color:grey;
   text-align: center;
   vertical-align: middle;
-  flex:1;
 }
 
 .graph {
