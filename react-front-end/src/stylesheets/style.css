@@ -21,6 +21,11 @@ body {
    /*justify-content: center;*/
 }
 
+#logo{
+  margin-left:-10px;
+  padding:0;
+}
+
 .logodiv {
   display:flex;
 }
