@@ -9,13 +9,13 @@ export default class BeverageGraph extends Component {
     var time = ""
     switch (this.props.time) {
       case "day":
-        time = "Today"
+        time = "TODAY"
         break;
       case "week":
-        time = "This Week"
+        time = "WEEK"
         break;
       case "month":
-        time = "This Month"
+        time = "MONTH"
         break;
     }
     
@@ -26,22 +26,22 @@ export default class BeverageGraph extends Component {
           <V.VictoryAxis
           label={time}
           style={{
-            axis: {stroke: "#E96294"},
-            grid: {strokeWidth: 2},
+            axis: {stroke: "#E96294", strokeWidth: 3},
+            grid: {strokeWidth: 3},
             ticks: {stroke: "#E96294"},
-            tickLabels: {fontSize: 15, fill:"#E96294"},
-            axisLabel: {fill:"#E96294"}
+            tickLabels: {fontSize: 15, fill:"#E96294", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#E96294", fontFamily: "Roboto", fontWeight: "400"}
           }}
           tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
           label="Beverages (# of cups)"
           style={{
-            axis: {stroke: "#E96294"},
-            grid: {strokeWidth: 2},
+            axis: {stroke: "#E96294", strokeWidth: 3},
+            grid: {strokeWidth: 3},
             ticks: {stroke: "#E96294"},
-            tickLabels: {fontSize: 15, fill:"#E96294"},
-            axisLabel: {fontSize: 15, fill:"#E96294"}
+            tickLabels: {fontSize: 15, fill:"#E96294", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#E96294", fontFamily: "Roboto", fontWeight: "400"}
           }}
           tickCount={0}
            domain={[0,40]} standalone={false}/>

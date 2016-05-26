@@ -9,7 +9,7 @@ import HumidGraph from './../graphs/humidgraph';
 import BeverageGraph from './../graphs/beveragegraph';
 import DoorGraph from './../graphs/doorgraph';
 import SoundGraph from './../graphs/soundgraph';
-import ProfileGraph from './../graphs/profilegraph';
+import MemberGraph from './../graphs/membergraph';
 
 export default class Sensor extends Component {
 
@@ -18,10 +18,10 @@ export default class Sensor extends Component {
       <div className="react-sensor-div ">
         <div className="row h-center v-center">
           <Icon img = {this.props.img} />
-          <Value val = {this.props.val} />
+          <Value val = {this.props.val} name = {this.props.name}/>
           {
             (this.props.name && this.props.name !== "sound")
-          ? <Buttons _setApiTime = {this.props._setApiTime} />
+          ? <Buttons _setApiTime = {this.props._setApiTime} name = {this.props.name}/>
           : null
           }
         </div>
@@ -52,8 +52,8 @@ export default class Sensor extends Component {
             : null
           }
           {
-            (this.props.name && this.props.name === "profile")
-            ? <ProfileGraph data={this.props.data} />
+            (this.props.name && this.props.name === "member")
+            ? <MemberGraph data={this.props.data} />
             : null
           }
       </div>

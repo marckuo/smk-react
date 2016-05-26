@@ -3,18 +3,18 @@ import style from '../../stylesheets/style.css';
 import Grid from 'react-bootstrap/lib/Grid';
 import * as V from 'victory';
 
-export default class ProfileGraph extends Component {
+export default class MemberGraph extends Component {
   render() {
     var time = ""
     switch (this.props.time) {
       case "day":
-        time = "Today"
+        time = "TODAY"
         break;
       case "week":
-        time = "This Week"
+        time = "WEEK"
         break;
       case "month":
-        time = "This Month"
+        time = "MONTH"
         break;
     }
     
@@ -24,22 +24,22 @@ export default class ProfileGraph extends Component {
           <V.VictoryAxis
           label={time}
           style={{
-            axis: {stroke: "#8B4CDB"},
+            axis: {stroke: "#8B4CDB", strokeWidth: 3},
             grid: {strokeWidth: 2},
             ticks: {stroke: "#8B4CDB"},
-            tickLabels: {fontSize: 15, fill:"#8B4CDB"},
-            axisLabel: {fill:"#8B4CDB"}
+            tickLabels: {fontSize: 15, fill:"#8B4CDB", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize:15, fill:"#8B4CDB", fontFamily: "Roboto", fontWeight: "400"}
           }}
           tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="Users Signed On"
+          label="USERS SIGNED ON"
           style={{
-            axis: {stroke: "#8B4CDB"},
+            axis: {stroke: "#8B4CDB", strokeWidth: 3},
             grid: {strokeWidth: 2},
             ticks: {stroke: "#8B4CDB"},
-            tickLabels: {fontSize: 15, fill:"#8B4CDB"},
-            axisLabel: {fontSize: 15, fill:"#8B4CDB"}
+            tickLabels: {fontSize: 15, fill:"#8B4CDB", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#8B4CDB", fontFamily: "Roboto", fontWeight: "400"}
           }}
           tickCount={0}
            domain={[0,40]} standalone={false}/>

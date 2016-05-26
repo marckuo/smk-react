@@ -11,24 +11,24 @@ export default class App extends Component {
 	constructor(props) {
     super(props);
 		  this.state = {
-        temp_img: "temperature.svg",
-		    humid_img: "humidity.svg",
-		    door_img: "door.svg",
-		    beverage_img: "coffee.svg",
-        profile_img: "profile.svg",
-        sound_img: "sound.svg",
+        temp_img: "temperature_.svg",
+		    humid_img: "humidity_.svg",
+		    door_img: "door_.svg",
+		    beverage_img: "coffee_.svg",
+        member_img: "member_.svg",
+        sound_img: "sound_.svg",
         temp_data_array: [{x:0,y:0}],
         humid_data_array: [{x:0,y:0}],
         door_data_array: [{x:0,y:0}],
         beverage_data_array: [{x:0,y:0}],
-        sound_data_array: [{x:0,y:0}],
-        profile_data_array: [{x:0,y:0}],
+        sound_data_array: [{x:0,y:1},{x:1,y:2},{x:2,y:3},{x:3,y:4},{x:4,y:5},{x:5,y:6},{x:6,y:7},{x:7,y:6},{x:8,y:5},{x:9,y:4},{x:10,y:3},{x:11,y:2},{x:12,y:1},],
+        member_data_array: [{x:0,y:0}],
         selected_sensor: null,
         selected_temp_time: null,
         selected_humid_time: null,
         selected_beverage_time: null,
         selected_door_time: null,
-        selected_profile_time: null,
+        selected_member_time: null
 		  }
   }
 
@@ -72,12 +72,12 @@ export default class App extends Component {
     })
   }
 
-  _profileApiCall= () => {
+  _memberApiCall= () => {
     let self= this;
     axios.get(`http://localhost:4000/api/signed_in`)
     .then(function(res) {
       self.setState({
-        profile_val: res.data
+        member_val: res.data
       })
     })
   }
@@ -154,7 +154,7 @@ export default class App extends Component {
     })
   }
 
-  // _setApiProfileTime = (time="day") => {
+  // _setApiMemberTime = (time="day") => {
   //   // console.log('api call happening');
   //   // console.log(time);
   //   let self= this;
@@ -166,8 +166,8 @@ export default class App extends Component {
   //       ApiRes.push(i);
   //     })
   //     self.setState({
-  //       selected_profile_time: time,
-  //       profile_data_array: ApiRes
+  //       selected_member_time: time,
+  //       member_data_array: ApiRes
   //     })
   //   })
   // }
@@ -177,11 +177,12 @@ export default class App extends Component {
     this._humidApiCall();
     this._beverageApiCall();
     this._doorApiCall();
-    this._profileApiCall();
+    this._memberApiCall();
     this._setApiTempTime();
     this._setApiHumidTime();
     this._setApiBeverageTime();
     this._setApiDoorTime();
+    // this._setApiMemberTime();
 
 		let self= this;
 
@@ -233,7 +234,7 @@ export default class App extends Component {
     socket.on('member', function(data){
       console.log('this inside socket: ' + data);
       self.setState({
-        profile_val: data
+        member_val: data
       });
     });
 
@@ -250,7 +251,7 @@ export default class App extends Component {
           _setApiTempTime={this._setApiTempTime}
           _setApiHumidTime={this._setApiHumidTime}
           _setApiBeverageTime={this._setApiBeverageTime}
-          _setApiDoorTime={this._setApiDoorTime}
+          _setApiDoorTime={this._setApiDoorTime}  
           // _setApiProfileTime={this._setApiProfileTime} 
           />
         </div>

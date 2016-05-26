@@ -9,13 +9,13 @@ export default class DoorGraph extends Component {
     var time = ""
     switch (this.props.time) {
       case "day":
-        time = "Today"
+        time = "TODAY"
         break;
       case "week":
-        time = "This Week"
+        time = "WEEK"
         break;
       case "month":
-        time = "This Month"
+        time = "MONTH"
         break;
     }
     
@@ -26,22 +26,22 @@ export default class DoorGraph extends Component {
           <V.VictoryAxis
           label={time}
           style={{
-            axis: {stroke: "#0BAC45"},
+            axis: {stroke: "#0BAC45", strokeWidth: 3},
             grid: {strokeWidth: 2},
             ticks: {stroke: "#0BAC45"},
-            tickLabels: {fontSize: 15, fill:"#0BAC45"},
-            axisLabel: {fill:"#0BAC45"}
+            tickLabels: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"}
           }}
           tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
           label="Door (# of times opened)"
           style={{
-            axis: {stroke: "#0BAC45"},
+            axis: {stroke: "#0BAC45", strokeWidth: 3},
             grid: {strokeWidth: 2},
             ticks: {stroke: "#0BAC45"},
-            tickLabels: {fontSize: 15, fill:"#0BAC45"},
-            axisLabel: {fontSize: 15, fill:"#0BAC45"}
+            tickLabels: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"}
           }}
           tickCount={0}
            domain={[0,40]} standalone={false}/>
@@ -56,7 +56,7 @@ export default class DoorGraph extends Component {
 
            animate={{
             onEnter: {
-              duration: 100,
+              duration: 500,
               before: () => ({
                 y: 0,
                 fill: "#0BAC45"

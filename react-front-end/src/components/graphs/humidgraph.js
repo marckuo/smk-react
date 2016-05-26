@@ -9,13 +9,13 @@ export default class HumidGraph extends Component {
     var time = ""
     switch (this.props.time) {
       case "day":
-        time = "Today"
+        time = "TODAY"
         break;
       case "week":
-        time = "This Week"
+        time = "WEEK"
         break;
       case "month":
-        time = "This Month"
+        time = "MONTH"
         break;
     }
 
@@ -26,11 +26,11 @@ export default class HumidGraph extends Component {
           <V.VictoryAxis
           label= {time}
           style={{
-            axis: {stroke: "#3670D2"},
+            axis: {stroke: "#3670D2", strokeWidth: 3},
             grid: {strokeWidth: 2},
             ticks: {stroke: "#3670D2"},
-            tickLabels: {fontSize: 15, fill:"#3670D2"},
-            axisLabel: {fill:"#3670D2"}
+            tickLabels: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"}
 
           }}
           tickCount={0}
@@ -38,22 +38,22 @@ export default class HumidGraph extends Component {
           <V.VictoryAxis dependentAxis
           label="Humidity (%)"
           style={{
-            axis: {stroke: "#3670D2"},
+            axis: {stroke: "#3670D2", strokeWidth: 3},
             grid: {strokeWidth: 2},
             ticks: {stroke: "#3670D2"},
-            tickLabels: {fontSize: 15, fill:"#3670D2"},
-            axisLabel: {fontSize: 15, fill:"#3670D2"}
+            tickLabels: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"}
           }}
           // tickCount={4}
           // domain={[0,100]}
           standalone={false}/>
 
-          <V.VictoryLine 
+          <V.VictoryBar 
           style={{
             data: {
-              stroke: "#3670D2",
-              strokeWidth: 5,
-              // fill: "#3670D2"
+              // stroke: "#3670D2",
+              // strokeWidth: 5,
+              fill: "#3670D2"
             }
           }}
            data={this.props.data}

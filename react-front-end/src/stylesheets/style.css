@@ -10,17 +10,6 @@ body {
   width:100%;
 }
 
-.logo {
-
-}
-
-.sound {
-  height:300px;
-}
-
-.profile {
-  height:300px;
-}
 .logodiv {
   display:flex;
 }
@@ -29,22 +18,12 @@ body {
   padding-bottom:10px;
 }
 
-.root {
-	z-index: 1;
-}
-
 .sensor {
   padding: 20px;
 }
 
 .react-sensor-div {
   padding: 10px;
-}
-
-.white-txt {
-  font-family:Source Sans Pro;
-  font-size:2.5em;
-  color:#1D4998;
 }
 
 .container {
@@ -124,7 +103,7 @@ body {
 .sensor-bg-red {
   margin:0;
   padding:0;
-  /*background:#E21832;*/
+  /*color:#E21832;*/
   /*box-shadow: 10px 10px 10px #888888;*/
   box-shadow: 1px 1px 10px #888888;
 }
@@ -153,6 +132,30 @@ body {
   box-shadow: 1px 1px 15px #888888;
 }
 
+.sound {
+  color:#FBD046;
+}
+
+.member {
+  color:#8B4CDB;
+}
+
+.temp {
+  color:#E21832;
+}
+
+.humid {
+  color:#3670D2;
+}
+
+.beverage {
+  color:#E96294;
+}
+
+.door {
+  color:#0BAC45;
+}
+
 .icon {
     
 }
@@ -164,67 +167,183 @@ body {
 
 .value {
   float:left;
-  font-family:Source Sans Pro;
-  font-size:1.5em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size:2.5em;
   text-align: center;
   vertical-align: middle;
-  width:60px;
-  height:60px;
+  text-align: center;
 }
 
-.graph-container {
-  margin:0 auto;
-  align-content: center;
-  justify-content: center;
-  padding-top:10px;
-  padding-left: 30px;
-  padding-right:30px;
-  margin-bottom: 25px;
+.graph {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
-.button {
-  height:300px;
-  width:100%;
-  display:inline-block;
-  font-family:Arial, "Helvetica", sans-serif;
-  font-size:16px;
-  font-weight:bold;
-  color:#fff;
-  text-decoration:none;
-  text-transform:uppercase;
-  text-align:center;
-  text-shadow:1px 1px 0px #07526e;
-  padding:10px;
-  margin-left:auto;
-  margin-right:auto;
-  position:relative;
-  cursor:pointer;
-  background-image: linear-gradient(bottom, rgb(14,137,182) 0%, rgb(22,179,236) 100%);
-  border-radius: 5px;
+.smbutton-member {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #8B4CDB !important;
+  font-size: 1em;
+  height:100%;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  margin-left:2px;
+  margin-right:2px;
+  border: 1px solid #8B4CDB;
+  background: white;
+  transition: all 1s ease;
+}
+
+.smbutton-member:hover {
+  color: white !important;
+  border: 1px solid #8B4CDB;
+  background: #8B4CDB;
+}
+
+.smbutton-member:active {
+  color: white !important;
+  border: 1px solid #8B4CDB;
+  background: #8B4CDB;
 }
 
 .smbutton {
-  font-family: arial;
-  color: white !important;
-  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #1D4998 !important;
+  font-size: 1em;
   height:100%;
-  /*text-shadow: 1px 1px 0px #7CACDE;*/
+  text-align: center;
+  vertical-align: middle;
   padding: 5px;
   margin-left:2px;
   margin-right:2px;
   border: 1px solid #1D4998;
-  background: #1D4998;
-  /*background: linear-gradient(top,  #63B8EE,  #468CCF);*/
-  /*background: -ms-linear-gradient(top,  #63B8EE,  #468CCF);*/
-  /*background: -webkit-gradient(linear, left top, left bottom, from(#63B8EE), to(#468CCF));*/
-  /*background: -moz-linear-gradient(top,  #63B8EE,  #468CCF);*/
+  background: white;
+  transition: all 1s ease;
 }
 
 .smbutton:hover {
-  color: #14396A !important;
-  background: #468CCF;
-  background: linear-gradient(top,  #468CCF,  #63B8EE);
-  background: -ms-linear-gradient(top,  #468CCF,  #63B8EE);
-  background: -webkit-gradient(linear, left top, left bottom, from(#468CCF), to(#63B8EE));
-  background: -moz-linear-gradient(top,  #468CCF,  #63B8EE);
+  color: white !important;
+  border: 1px solid #1D4998;
+  background: #1D4998;
+}
+
+.smbutton:active {
+  color: white !important;
+  border: 1px solid #1D4998;
+  background: #1D4998;
+}
+
+.smbutton-temp {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #E21832 !important;
+  font-size: 1em;
+  height:100%;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  margin-left:2px;
+  margin-right:2px;
+  border: 1px solid #E21832;
+  background: white;
+  transition: all 1s ease;
+}
+
+.smbutton-temp:hover {
+  color: white !important;
+  border: 1px solid #E21832;
+  background: #E21832;
+}
+
+.smbutton-temp:active {
+  color: white !important;
+  border: 1px solid #E21832;
+  background: #E21832;
+}
+
+.smbutton-humid {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #3670D2 !important;
+  font-size: 1em;
+  height:100%;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  margin-left:2px;
+  margin-right:2px;
+  border: 1px solid #3670D2;
+  background: white;
+  transition: all 1s ease;
+}
+
+.smbutton-humid:hover {
+  color: white !important;
+  border: 1px solid #3670D2;
+  background: #3670D2;
+}
+
+.smbutton-humid:active {
+  color: white !important;
+  border: 1px solid #3670D2;
+  background: #3670D2;
+}
+
+.smbutton-beverage {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #E96294 !important;
+  font-size: 1em;
+  height:100%;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  margin-left:2px;
+  margin-right:2px;
+  border: 1px solid #E96294;
+  background: white;
+  transition: all 1s ease;
+}
+
+.smbutton-beverage:hover {
+  color: white !important;
+  border: 1px solid #E96294;
+  background: #E96294;
+}
+
+.smbutton-beverage:active {
+  color: white !important;
+  border: 1px solid #E96294;
+  background: #E96294;
+}
+
+.smbutton-door {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #0BAC45 !important;
+  font-size: 1em;
+  height:100%;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  margin-left:2px;
+  margin-right:2px;
+  border: 1px solid #0BAC45;
+  background: white;
+  transition: all 1s ease;
+}
+
+.smbutton-door:hover {
+  color: white !important;
+  border: 1px solid #0BAC45;
+  background: #0BAC45;
+}
+
+.smbutton-door:active {
+  color: white !important;
+  border: 1px solid #0BAC45;
+  background: #0BAC45;
 }

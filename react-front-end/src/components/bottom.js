@@ -12,7 +12,7 @@ export default class Bottom extends Component {
         humid_name:"humid",
         beverage_name:"beverage",
         door_name:"door",
-        profile_name:"profile",
+        member_name:"member",
         sound_name:"sound"
       }
     }
@@ -22,7 +22,7 @@ export default class Bottom extends Component {
       <div> 
         <div className="col-xs-12 col-sm-6 col-md-4 sensor">
           <div className="sensor-bg-yellow">
-            <Sensor img={this.props.profile_img} val={this.props.profile_val} name={this.state.profile_name} data={this.props.profile_data_array} />
+            <Sensor img={this.props.member_img} val={this.props.member_val} name={this.state.member_name} data={this.props.profile_data_array} />
           </div>
         </div>
 
@@ -60,4 +60,4 @@ export default class Bottom extends Component {
   }
 }
 
-// _setApiTime = {this.props._setApiProfileTime} time={this.props.selected_profile_time}
+// _setApiTime = {this.props._setApiMemberTime} time={this.props.selected_member_time}

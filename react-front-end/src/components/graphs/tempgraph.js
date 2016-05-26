@@ -5,76 +5,73 @@ import * as V from 'victory';
 
 export default class TempGraph extends Component {
 
-
-
   render() {
     var time = ""
     switch (this.props.time) {
       case "day":
-        time = "HOURS"
+        time = "TODAY"
         break;
       case "week":
-        time = "DAYS"
+        time = "WEEK"
         break;
       case "month":
-        time = "DAYS"
+        time = "MONTH"
         break;
     }
      
-      return (
-        <div id='graph'>               
-          <V.VictoryChart>
+    return (
+      <div className="graph">               
+        <V.VictoryChart>
+        
+        <V.VictoryAxis
+        label= {time}
+        style={{
+          axis: {stroke: "#EC334D",strokeWidth: 3},
+          // grid: {stroke: "#EC334D", strokeWidth: 3},
+          ticks: {stroke: "#EC334D"},
+          tickLabels: {fontSize: 15, fill:"#EC334D", fontFamily: "Roboto", fontWeight: "400"},
+          axisLabel: {fontSize: 15, fill:"#EC334D", fontFamily: "Roboto", fontWeight: "400"},
+
+
+        }}
+        tickCount={0}
+         standalone={false}/>
+        <V.VictoryAxis dependentAxis
+        label="TEMPERATURE (°C)"
+        style={{
+          axis: {stroke: "#EC334D",strokeWidth: 3},
+          // grid: {stroke: "#EC334D", strokeWidth: 3},
+          ticks: {stroke: "#EC334D"},
+          tickLabels: {fontSize: 15, fill:"#EC334D", fontFamily: "Roboto", fontWeight: "400"},
+          axisLabel: {fontSize:15, fill:"#EC334D", fontFamily: "Roboto", fontWeight: "400"}
+        }}
+          tickCount={5}
+         domain={[0,40]} standalone={false}/>
+
+        <V.VictoryBar
+        
+        style={{
+          data: {
+            // stroke: "#EC334D",
+            // strokeWidth: 5,
+            fill: "#EC334D",
+            label: {size: 20},
+            symbol: {size:20},
+          }
+
+        }}
+        data={this.props.data}
+        // labels={this.props.data.y}
+        // symbol={"circle"}
+        // size={8}
+         // symbol={"Square"}
+         animate={{duration:500}}
           
-          <V.VictoryAxis
-          label= {time}
-          style={{
-            axis: {stroke: "#EC334D"},
-            grid: {strokeWidth: 2},
-            ticks: {stroke: "#EC334D"},
-            tickLabels: {fontSize: 15, fill:"#EC334D"},
-            axisLabel: {fill:"#EC334D"}
-
-          }}
-          tickCount={0}
-           standalone={false}/>
-          <V.VictoryAxis dependentAxis
-          label="Temperature (°C)"
-          style={{
-            axis: {stroke: "#EC334D"},
-            grid: {strokeWidth: 2},
-            ticks: {stroke: "#EC334D"},
-            tickLabels: {fontSize: 15, fill:"#EC334D"},
-            axisLabel: {fontSize:15, fill:"#EC334D"}
-          }}
-            tickCount={5}
-           domain={[0,40]} standalone={false}/>
-
-          <V.VictoryBar
-          
-          style={{
-            data: {
-              // stroke: "#EC334D",
-              // strokeWidth: 5,
-              fill: "#EC334D",
-              label: {size: 20},
-              symbol: {size:20}
-
-            }
-
-          }}
-          data={this.props.data}
-          // labels={this.props.data.y}
-          // symbol={"circle"}
-          // size={8}
-           // symbol={"Square"}
-           animate={{duration:1500}}
-            
-          
-          />
-        </V.VictoryChart>
-        </div>
-      );
-    
+        
+        />
+      </V.VictoryChart>
+      </div>
+    );
   }
 }
 
