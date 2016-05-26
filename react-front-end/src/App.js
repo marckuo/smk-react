@@ -5,7 +5,7 @@ import Bottom from './components/bottom';
 import Top from './components/top';
 import io from 'socket.io-client';
 import Grid from 'react-bootstrap/lib/Grid';
-var socket = io('http://localhost:4000');
+var socket = io('https://quiet-castle-31566.herokuapp.com');
 
 export default class App extends Component {
 	constructor(props) {
@@ -34,7 +34,7 @@ export default class App extends Component {
 
   _beverageApiCall = () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/last/beverage`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/last/beverage`)
     .then(function(res) {
       self.setState({
         beverage_val: res.data
@@ -44,7 +44,7 @@ export default class App extends Component {
 
   _doorApiCall = () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/last/door`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/last/door`)
     .then(function(res) {
       self.setState({
         door_val: res.data
@@ -54,7 +54,7 @@ export default class App extends Component {
 
   _humidApiCall = () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/last/humid`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/last/humid`)
     .then(function(res) {
       self.setState({
         humid_val: res.data.value
@@ -64,7 +64,7 @@ export default class App extends Component {
 
   _tempApiCall = () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/last/temp`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/last/temp`)
     .then(function(res) {
       self.setState({
         temp_val: res.data.value
@@ -74,7 +74,7 @@ export default class App extends Component {
 
   _memberApiCall= () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/signed_in`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/signed_in`)
     .then(function(res) {
       self.setState({
         member_val: res.data
@@ -86,7 +86,7 @@ export default class App extends Component {
     console.log('api call happening');
     console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/temp`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/temp`)
     .then(function(res) {
       console.log(res);
       const ApiRes = [];
@@ -104,7 +104,7 @@ export default class App extends Component {
     // console.log('api call happening');
     // console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/humid`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/humid`)
     .then(function(res) {
       // console.log(res);
       const ApiRes = [];
@@ -122,7 +122,7 @@ export default class App extends Component {
     // console.log('api call happening');
     // console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/beverage`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/beverage`)
     .then(function(res) {
       // console.log(res);
       const ApiRes = [];
@@ -140,7 +140,7 @@ export default class App extends Component {
     // console.log('api call happening');
     // console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/door`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/door`)
     .then(function(res) {
       // console.log(res);
       const ApiRes = [];
@@ -158,7 +158,7 @@ export default class App extends Component {
   //   // console.log('api call happening');
   //   // console.log(time);
   //   let self= this;
-  //   axios.get(`http://localhost:4000/api/history/${time}/profile`)
+  //   axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/profile`)
   //   .then(function(res) {
   //     // console.log(res);
   //     const ApiRes = [];

@@ -35,7 +35,7 @@ export default class BeverageGraph extends Component {
           tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="Beverages (# of cups)"
+          label="BEVERAGES (# of cups)"
           style={{
             axis: {stroke: "#E96294", strokeWidth: 3},
             grid: {strokeWidth: 3},
@@ -43,8 +43,8 @@ export default class BeverageGraph extends Component {
             tickLabels: {fontSize: 15, fill:"#E96294", fontFamily: "Roboto", fontWeight: "400"},
             axisLabel: {fontSize: 15, fill:"#E96294", fontFamily: "Roboto", fontWeight: "400"}
           }}
-          tickCount={0}
-           domain={[0,40]} standalone={false}/>
+          tickCount={5}
+          standalone={false}/>
 
           <V.VictoryBar
           style={{

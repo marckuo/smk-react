@@ -35,7 +35,7 @@ export default class DoorGraph extends Component {
           tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="Door (# of times opened)"
+          label="DOOR (# of times opened)"
           style={{
             axis: {stroke: "#0BAC45", strokeWidth: 3},
             grid: {strokeWidth: 2},
@@ -43,8 +43,8 @@ export default class DoorGraph extends Component {
             tickLabels: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"},
             axisLabel: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"}
           }}
-          tickCount={0}
-           domain={[0,40]} standalone={false}/>
+          tickCount={5}
+          standalone={false}/>
 
           <V.VictoryBar
           style={{

@@ -36,7 +36,7 @@ export default class HumidGraph extends Component {
           tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="Humidity (%)"
+          label="HUMIDITY (%)"
           style={{
             axis: {stroke: "#3670D2", strokeWidth: 3},
             grid: {strokeWidth: 2},

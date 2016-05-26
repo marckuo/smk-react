@@ -33,7 +33,7 @@ export default class MemberGraph extends Component {
           tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="USERS SIGNED ON"
+          label="USERS (Signed On)"
           style={{
             axis: {stroke: "#8B4CDB", strokeWidth: 3},
             grid: {strokeWidth: 2},
@@ -41,8 +41,8 @@ export default class MemberGraph extends Component {
             tickLabels: {fontSize: 15, fill:"#8B4CDB", fontFamily: "Roboto", fontWeight: "400"},
             axisLabel: {fontSize: 15, fill:"#8B4CDB", fontFamily: "Roboto", fontWeight: "400"}
           }}
-          tickCount={0}
-           domain={[0,40]} standalone={false}/>
+          tickCount={4}
+           domain={[0,40]}  standalone={false}/>
 
           <V.VictoryBar
           style={{
