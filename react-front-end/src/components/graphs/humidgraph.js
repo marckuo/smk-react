@@ -47,8 +47,9 @@ export default class HumidGraph extends Component {
           tickCount={4}
           domain={[0,100]}
           standalone={false}/>
-
-          <V.VictoryBar 
+          {
+            (this.props.time && this.props.time !== "day") 
+          ? <V.VictoryBar
           style={{
             data: {
               // stroke: "#3670D2",
@@ -57,12 +58,18 @@ export default class HumidGraph extends Component {
             }
           }}
            data={this.props.data}
-
-           //animate={{duration:500}}
           />
-
-
-
+          : <V.VictoryLine
+          style={{
+            data: {
+              stroke: "#3670D2",
+              strokeWidth: 5,
+              // fill: "#3670D2"
+            }
+          }}
+           data={this.props.data}
+          />
+        }
         </V.VictoryChart>
         </div>
       );

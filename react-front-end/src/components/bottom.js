@@ -19,10 +19,10 @@ export default class Bottom extends Component {
 
   render() {
     return (
-      <div> 
+      <div className="sensor-container"> 
         <div className="col-xs-12 col-sm-6 col-md-4 sensor">
           <div className="sensor-bg-yellow">
-            <Sensor img={this.props.member_img} val={this.props.member_val} name={this.state.member_name} data={this.props.profile_data_array} />
+            <Sensor img={this.props.member_img} val={this.props.member_val} name={this.state.member_name} data={this.props.member_data_array} />
           </div>
         </div>
 

@@ -20,7 +20,9 @@ export default class TempGraph extends Component {
     }
      
     return (
+
       <div className="graph">               
+
         <V.VictoryChart>
         
         <V.VictoryAxis
@@ -47,28 +49,31 @@ export default class TempGraph extends Component {
         }}
           tickCount={5}
          domain={[0,40]} standalone={false}/>
-
-        <V.VictoryBar
-        
-        style={{
+     
+        {
+          (this.props.time && this.props.time !== "day") 
+          ? <V.VictoryBar
+          style={{
           data: {
-            // stroke: "#EC334D",
-            // strokeWidth: 5,
             fill: "#EC334D",
             label: {size: 20},
             symbol: {size:20},
           }
-
         }}
         data={this.props.data}
-        // labels={this.props.data.y}
-        // symbol={"circle"}
-        // size={8}
-         // symbol={"Square"}
-         //animate={{duration:500}}
-          
-        
         />
+          : <V.VictoryLine
+          style={{
+          data: {
+            stroke: "#EC334D",
+            strokeWidth: 5,
+            label: {size: 20},
+            symbol: {size:20},
+          }
+        }}
+        data={this.props.data}
+        />
+      }
       </V.VictoryChart>
       </div>
     );

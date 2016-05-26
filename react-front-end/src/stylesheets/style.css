@@ -21,6 +21,18 @@ body {
    /*justify-content: center;*/
 }
 
+.row.member-value {
+    display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   text-align:center;
+}
+
 #logo{
   margin-top: -10px;
   margin-left:-10px;
@@ -35,7 +47,15 @@ body {
   padding-bottom:10px;
 }
 
+.sensor-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .sensor {
+  display: flex;
+  flex-grow: 1;
   padding: 20px;
 }
 
@@ -152,6 +172,7 @@ body {
 
 .member {
   color:#8B4CDB;
+  font-size:2em;
 }
 
 .temp {

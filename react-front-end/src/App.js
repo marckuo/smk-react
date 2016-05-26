@@ -88,7 +88,7 @@ export default class App extends Component {
     let self= this;
     axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/temp`)
     .then(function(res) {
-      console.log(res);
+      // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
         ApiRes.push(i);
@@ -109,7 +109,7 @@ export default class App extends Component {
       // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
-        console.log("i is",i)
+        // console.log("i is",i)
         ApiRes.push(i);
       })
       self.setState({
@@ -155,23 +155,23 @@ export default class App extends Component {
     })
   }
 
-  // _setApiMemberTime = (time="day") => {
+
+
+  _setApiMemberTime = () => {
   //   // console.log('api call happening');
   //   // console.log(time);
-  //   let self= this;
-  //   axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/profile`)
-  //   .then(function(res) {
-  //     // console.log(res);
-  //     const ApiRes = [];
-  //     res.data.map(function(i){
-  //       ApiRes.push(i);
-  //     })
-  //     self.setState({
-  //       selected_member_time: time,
-  //       member_data_array: ApiRes
-  //     })
-  //   })
-  // }
+    let self= this;
+      axios.get(`https://quiet-castle-31566.herokuapp.com/api/signed_in`)
+    .then(function(res) {
+      const ApiRes = [];
+        ApiRes.push({x:0,y:res.data});
+      
+      self.setState({
+        member_data_array: ApiRes
+      })
+      console.log(self.state.member_data_array)
+    })
+  }
 
   componentWillMount(){
   	this._tempApiCall();
@@ -183,39 +183,39 @@ export default class App extends Component {
     this._setApiHumidTime();
     this._setApiBeverageTime();
     this._setApiDoorTime();
-    // this._setApiMemberTime();
+    this._setApiMemberTime();
 
 		let self= this;
 
 		socket.on('temp', function(data){
-      // let last_id = self.state.temp_data_array.length;
-      // console.log("last id", last_id);
-			console.log('this inside socket: ' + data);
+      let last_temp_id = self.state.temp_data_array.length;
+			// console.log('this inside socket: ' + data);
    //    self._tempAllApiCall();
    //    self._setTempSelected();
       self.setState({
 				temp_val: data,
-   //      selected_sensor: "temp",
-   //      graph_data_array: self.state.graph_data_array.concat([{x: last_id, y: parseInt(data)}])
+        temp_data_array: self.state.temp_data_array.concat([{x: last_temp_id+1, y: parseInt(data)}])
 			});
 		});
 
 		socket.on('humid', function(data){
-			console.log('this inside socket: ' + data);
+      let last_humid_id = self.state.humid_data_array.length;
+			// console.log('this inside socket: ' + data);
       self.setState({
-				humid_val: data
+				humid_val: data,
+        humid_data_array: self.state.humid_data_array.concat([{x: last_humid_id+1, y: parseInt(data)}])
 			});
 		});
 
 		socket.on('beverage', function(data){
-			console.log('this inside socket: ' + data);
+			// console.log('this inside socket: ' + data);
 			self.setState({
 				beverage_val: data
 			});
 		});
 
 		socket.on('door', function(data){
-			console.log('this inside socket: ' + data);
+			// console.log('this inside socket: ' + data);
 			self.setState({
 				door_val: data
 			});
@@ -235,7 +235,8 @@ export default class App extends Component {
     socket.on('member', function(data){
       console.log('this inside socket: ' + data);
       self.setState({
-        member_val: data
+        member_val: data,
+        member_data_array: [{x: 0, y: data }]
       });
     });
 

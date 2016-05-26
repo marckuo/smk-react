@@ -5,24 +5,11 @@ import * as V from 'victory';
 
 export default class MemberGraph extends Component {
   render() {
-    var time = ""
-    switch (this.props.time) {
-      case "day":
-        time = "TODAY"
-        break;
-      case "week":
-        time = "WEEK"
-        break;
-      case "month":
-        time = "MONTH"
-        break;
-    }
-    
     return (
       <div>
         <V.VictoryChart>
           <V.VictoryAxis
-          label={time}
+          label="TODAY"
           style={{
             axis: {stroke: "#8B4CDB", strokeWidth: 3},
             grid: {strokeWidth: 2},
@@ -42,25 +29,18 @@ export default class MemberGraph extends Component {
             axisLabel: {fontSize: 15, fill:"#8B4CDB", fontFamily: "Roboto", fontWeight: "400"}
           }}
           tickCount={4}
-           domain={[0,40]}  standalone={false}/>
+           domain={[0,10]}  standalone={false}/>
 
           <V.VictoryBar
           style={{
             data: {
+              stroke: "#8B4CDB",
+              strokeWidth: 5,
               fill: "#8B4CDB"
             }
           }}
+            padding={{left: 50}}
            data={this.props.data}
-
-          //  animate={{
-          //   onEnter: {
-          //     duration: 500,
-          //     before: () => ({
-          //       y: 0,
-          //       fill: "#8B4CDB"
-          //     })
-          //   }
-          // }}
           />
 
         </V.VictoryChart>

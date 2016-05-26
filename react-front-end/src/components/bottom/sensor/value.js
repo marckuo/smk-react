@@ -24,7 +24,7 @@ export default class Value extends Component {
           : null
           }{
             (this.props.name && this.props.name === "member")
-          ? <span className="unit"> USERS</span>
+          ? <div className="row unit"> USERS</div>
           : null
           }
       </div>

@@ -18,14 +18,22 @@ export default class Sensor extends Component {
       <div className="react-sensor-div">
         <div className="row h-center v-center">
           <Icon img = {this.props.img} />
-          <Value val = {this.props.val} name = {this.props.name}/>
           {
-            (this.props.name && this.props.name !== "sound")
+            (this.props.name && this.props.name !== "member")
+          ? <Value val = {this.props.val} name = {this.props.name}/>
+          : null
+          }
+          {
+            (this.props.name && this.props.name !== "sound" && this.props.name !== "member")
           ? <Buttons _setApiTime = {this.props._setApiTime} name = {this.props.name}/>
           : null
           }
         </div>
-          
+          {
+            (this.props.name && this.props.name === "member")
+          ? <div id="member"className="row member-value"><Value val = {this.props.val} name = {this.props.name}/></div>
+          : null
+          }
           {
             (this.props.name && this.props.name === "temp")
             ? <TempGraph time={this.props.time} data={this.props.data}/>
@@ -49,11 +57,6 @@ export default class Sensor extends Component {
           {
             (this.props.name && this.props.name === "sound")
             ? <SoundGraph data={this.props.data} />
-            : null
-          }
-          {
-            (this.props.name && this.props.name === "member")
-            ? <MemberGraph data={this.props.data} />
             : null
           }
       </div>
