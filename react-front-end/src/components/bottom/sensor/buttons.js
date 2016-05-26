@@ -12,7 +12,7 @@ export default class Buttons extends Component {
 
   render() {
     return (
-      <div className="h-center v-center buttons">
+      <div className="buttons">
         <button className={`smbutton-${this.props.name}`} onClick = {this._setApiTime.bind(this, 'day')}>DAY</button>
         <button className={`smbutton-${this.props.name}`} onClick = {this._setApiTime.bind(this, 'week')}>WEEK</button>
         <button className={`smbutton-${this.props.name}`} onClick = {this._setApiTime.bind(this, 'month')}>MONTH</button>

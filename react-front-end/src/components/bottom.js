@@ -34,25 +34,25 @@ export default class Bottom extends Component {
 
         <div className="col-xs-12 col-sm-6 col-md-4 sensor">
           <div className="sensor-bg-red">
-            <Sensor img={this.props.temp_img} val={`${this.props.temp_val}°C`} name={this.state.temp_name}  _setApiTime = {this.props._setApiTempTime} time={this.props.selected_temp_time} data={this.props.temp_data_array} />
+            <Sensor img={this.props.temp_img} val={this.props.temp_val} name={this.state.temp_name}  _setApiTime = {this.props._setApiTempTime} time={this.props.selected_temp_time} data={this.props.temp_data_array} />
           </div>
         </div>
                 
         <div className="col-xs-12 col-sm-6 col-md-4 sensor">
           <div className="sensor-bg-blue">
-            <Sensor img={this.props.humid_img} val={`${this.props.humid_val}%`} name={this.state.humid_name} _setApiTime = {this.props._setApiHumidTime} time={this.props.selected_humid_time} data={this.props.humid_data_array} />
+            <Sensor img={this.props.humid_img} val={this.props.humid_val} name={this.state.humid_name} _setApiTime = {this.props._setApiHumidTime} time={this.props.selected_humid_time} data={this.props.humid_data_array} />
           </div>
         </div>
        
-       <div className="col-xs-12 col-sm-6 col-md-4 sensor">
-          <div className="sensor-bg-green">
-            <Sensor img={this.props.beverage_img} val={`${this.props.beverage_val}`} name={this.state.beverage_name} _setApiTime = {this.props._setApiBeverageTime} time={this.props.selected_beverage_time} data={this.props.beverage_data_array} />
+       <div className="col-xs-12 col-sm-6 col-md-4 sensor pink">
+          <div className="sensor-bg-pink">
+            <Sensor img={this.props.beverage_img} val={this.props.beverage_val} name={this.state.beverage_name} _setApiTime = {this.props._setApiBeverageTime} time={this.props.selected_beverage_time} data={this.props.beverage_data_array} />
           </div>
         </div>
         
         <div className="col-xs-12 col-sm-6 col-md-4 sensor">
-          <div className="sensor-bg-pink">
-            <Sensor img={this.props.door_img} val={`${this.props.door_val}`} name={this.state.door_name} _setApiTime = {this.props._setApiDoorTime} time={this.props.selected_door_time} data={this.props.door_data_array} />
+          <div className="sensor-bg-green">
+            <Sensor img={this.props.door_img} val={this.props.door_val} name={this.state.door_name} _setApiTime = {this.props._setApiDoorTime} time={this.props.selected_door_time} data={this.props.door_data_array} />
           </div>
         </div>
     </div>

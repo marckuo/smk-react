@@ -10,6 +10,17 @@ body {
   width:100%;
 }
 
+.row.h-center.v-center {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
 .logodiv {
   display:flex;
 }
@@ -43,16 +54,6 @@ body {
 
 #sketch {
 	z-index:0;
-}
-
-.h-center {
-  display:flex;
-  justify-content: center;
-}
-
-.v-center {
-  display:flex;
-  align-content: center;
 }
 
 .row {
@@ -120,10 +121,17 @@ body {
   margin:0;
   padding:0;
   /*background:#E96294;*/
+  /*background:white;*/
  /*box-shadow: 10px 10px 10px #888888;*/
  box-shadow: 1px 1px 10px #888888;
+  /*border:1px solid #E96294;*/
 }
-
+/*
+.pink {
+  background:#E96294;
+  padding:2px;
+}
+*/
 .sensor-bg-yellow {
   margin:0;
   padding:0;
@@ -157,12 +165,12 @@ body {
 }
 
 .icon {
-    
+  flex:1;
 }
 
 
 .buttons {
-
+  flex:2;
 }
 
 .value {
@@ -170,9 +178,19 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size:2.5em;
+  text-align: left;
+  vertical-align: middle;
+  flex:2;
+}
+
+.unit {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size:0.6em;
+  color:grey;
   text-align: center;
   vertical-align: middle;
-  text-align: center;
+  flex:1;
 }
 
 .graph {

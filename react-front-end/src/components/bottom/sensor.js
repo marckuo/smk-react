@@ -15,7 +15,7 @@ export default class Sensor extends Component {
 
   render() {
     return (
-      <div className="react-sensor-div ">
+      <div className="react-sensor-div">
         <div className="row h-center v-center">
           <Icon img = {this.props.img} />
           <Value val = {this.props.val} name = {this.props.name}/>
