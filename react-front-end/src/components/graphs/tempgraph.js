@@ -65,7 +65,7 @@ export default class TempGraph extends Component {
         // symbol={"circle"}
         // size={8}
          // symbol={"Square"}
-         animate={{duration:500}}
+         //animate={{duration:500}}
           
         
         />

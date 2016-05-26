@@ -54,15 +54,15 @@ export default class BeverageGraph extends Component {
           }}
            data={this.props.data}
 
-           animate={{
-            onEnter: {
-              duration: 500,
-              before: () => ({
-                y: 0,
-                fill: "#E96294"
-              })
-            }
-          }}
+          //  animate={{
+          //   onEnter: {
+          //     duration: 500,
+          //     before: () => ({
+          //       y: 0,
+          //       fill: "#E96294"
+          //     })
+          //   }
+          // }}
           />
 
         </V.VictoryChart>

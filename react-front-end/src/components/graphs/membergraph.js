@@ -52,15 +52,15 @@ export default class MemberGraph extends Component {
           }}
            data={this.props.data}
 
-           animate={{
-            onEnter: {
-              duration: 500,
-              before: () => ({
-                y: 0,
-                fill: "#8B4CDB"
-              })
-            }
-          }}
+          //  animate={{
+          //   onEnter: {
+          //     duration: 500,
+          //     before: () => ({
+          //       y: 0,
+          //       fill: "#8B4CDB"
+          //     })
+          //   }
+          // }}
           />
 
         </V.VictoryChart>

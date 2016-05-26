@@ -54,15 +54,15 @@ export default class DoorGraph extends Component {
           }}
            data={this.props.data}
 
-           animate={{
-            onEnter: {
-              duration: 500,
-              before: () => ({
-                y: 0,
-                fill: "#0BAC45"
-              })
-            }
-          }}
+          //  animate={{
+          //   onEnter: {
+          //     duration: 500,
+          //     before: () => ({
+          //       y: 0,
+          //       fill: "#0BAC45"
+          //     })
+          //   }
+          // }}
           />
 
         </V.VictoryChart>

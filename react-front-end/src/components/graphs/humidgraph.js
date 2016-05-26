@@ -44,8 +44,8 @@ export default class HumidGraph extends Component {
             tickLabels: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"},
             axisLabel: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"}
           }}
-          // tickCount={4}
-          // domain={[0,100]}
+          tickCount={4}
+          domain={[0,100]}
           standalone={false}/>
 
           <V.VictoryBar 
@@ -58,7 +58,7 @@ export default class HumidGraph extends Component {
           }}
            data={this.props.data}
 
-           animate={{duration:500}}
+           //animate={{duration:500}}
           />
 
 

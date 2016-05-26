@@ -109,6 +109,7 @@ export default class App extends Component {
       // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
+        console.log("i is",i)
         ApiRes.push(i);
       })
       self.setState({
@@ -223,11 +224,11 @@ export default class App extends Component {
 
 		socket.on('sound', function(data){
 
-		  var spectrumMap = data.map(function(num, index){
-		   return {'x': index + 1, 'y': num};
-		  });
+		  // var spectrumMap = data.map(function(num, index){
+		  //  return {'x': index + 1, 'y': num};
+		  // });
 			self.setState({
-				sound_data_array: spectrumMap
+				sound_data_array: data
 			});
 		});
 

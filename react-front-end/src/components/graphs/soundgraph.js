@@ -3,7 +3,14 @@ import * as V from 'victory';
 
 export default class SoundGraph extends Component {
 
+
+
   render() {
+
+    var spectrumMap = this.props.data.map(function(num, index){
+       return {'x': index + 1, 'y': num};
+      });
+
     return(
       <div>
         <V.VictoryBar
@@ -12,7 +19,7 @@ export default class SoundGraph extends Component {
               fill: "#FBD046"
             }
           }}
-          data={this.props.data}
+          data={spectrumMap}
          />
 
       </div>
