@@ -51,16 +51,46 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .sensor {
   display: flex;
-  flex-grow: 1;
-  padding: 20px;
+  width: calc(30%);
+  margin-top: 20px;
+  margin-bottom:-20px;
+  padding-bottom:20px;
+  /*flex-grow: 1;*/
+
+  /*padding: 20px;*/
+}
+
+.sensor > * {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sensor-bg-yellow {
+  justify-content: flex-start;
+  align-items: flex-start;
+} 
+
+.value.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 4em !important;
 }
 
 .react-sensor-div {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
 }
 
 .container {
@@ -199,20 +229,19 @@ body {
 }
 
 .value {
-  float:left;
+  /*float:left;*/
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size:2.5em;
   text-align: left;
   vertical-align: middle;
   flex:1;
-  padding-left:10px;
 }
 
 .unit {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  font-size:0.6em;
+  font-size:0.5em;
   color:grey;
   text-align: center;
   vertical-align: middle;

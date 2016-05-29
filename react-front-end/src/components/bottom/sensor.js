@@ -31,7 +31,9 @@ export default class Sensor extends Component {
         </div>
           {
             (this.props.name && this.props.name === "member")
-          ? <div id="member"className="row member-value"><Value val = {this.props.val} name = {this.props.name}/></div>
+          ? (<div id="member" className="row member-value">
+              <Value val = {this.props.val} name = {this.props.name}/>
+            </div>)
           : null
           }
           {

@@ -6,7 +6,10 @@ export default class Value extends Component {
   render() {
     return (
       <div className={`value ${this.props.name}`}>
-      	{this.props.val}{
+        	<span className="count">
+            {this.props.val}
+          </span>
+          {
             (this.props.name && this.props.name === "temp")
           ? <span className="unit">°C</span>
           : null
@@ -24,7 +27,7 @@ export default class Value extends Component {
           : null
           }{
             (this.props.name && this.props.name === "member")
-          ? <div className="row unit"> USERS</div>
+          ? <span className="unit">USERS SIGNED ON</span>
           : null
           }
       </div>
