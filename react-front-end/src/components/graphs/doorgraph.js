@@ -6,63 +6,67 @@ import * as V from 'victory';
 export default class DoorGraph extends Component {
 
   render() {
-    if (this.props.data !== null) {
-      return (
-        <div id='graph'>               
-          <V.VictoryChart>
+    var time = ""
+    switch (this.props.time) {
+      case "day":
+        time = "TODAY"
+        break;
+      case "week":
+        time = "WEEK"
+        break;
+      case "month":
+        time = "MONTH"
+        break;
+    }
+    
+    return (
+      <div>
+        <V.VictoryChart>
           
           <V.VictoryAxis
-          label="Time"
+          label={time}
           style={{
-            axis: {stroke: "white"},
+            axis: {stroke: "#0BAC45", strokeWidth: 3},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
-
+            ticks: {stroke: "#0BAC45"},
+            tickLabels: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"}
           }}
+          tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="# of Times Door Opened"
+          label="DOOR (# of times opened)"
           style={{
-            axis: {stroke: "white"},
+            axis: {stroke: "#0BAC45", strokeWidth: 3},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
+            ticks: {stroke: "#0BAC45"},
+            tickLabels: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#0BAC45", fontFamily: "Roboto", fontWeight: "400"}
           }}
-           domain={[0,40]} standalone={false}/>
+          tickCount={5}
+          standalone={false}/>
 
-          <V.VictoryBar 
+          <V.VictoryBar
           style={{
             data: {
-              fill: "white"
+              fill: "#0BAC45"
             }
           }}
            data={this.props.data}
 
-           animate={{
-            onEnter: {
-              duration: 500,
-              before: () => ({
-                y: 0,
-                fill: "white"
-              })
-            }
-          }}
+          //  animate={{
+          //   onEnter: {
+          //     duration: 500,
+          //     before: () => ({
+          //       y: 0,
+          //       fill: "#0BAC45"
+          //     })
+          //   }
+          // }}
           />
 
-
-
         </V.VictoryChart>
-        </div>
-      );
-    }
-    else {
-        return (
-          <div>
-          </div>
-        );
-    }
+      </div>
+    );
   }
 }

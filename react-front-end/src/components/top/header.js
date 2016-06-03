@@ -9,7 +9,6 @@ export default class Header extends Component {
     return (
       <div className="logo">
         <Logo />
-        <span id="time">8:00 PM</span>
       </div>
     )
   }

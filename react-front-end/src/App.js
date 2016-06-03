@@ -5,32 +5,36 @@ import Bottom from './components/bottom';
 import Top from './components/top';
 import io from 'socket.io-client';
 import Grid from 'react-bootstrap/lib/Grid';
-var socket = io('http://localhost:4000');
+var socket = io('https://quiet-castle-31566.herokuapp.com');
 
 export default class App extends Component {
 	constructor(props) {
     super(props);
 		  this.state = {
-		    temp_img: "temperature.svg",
-		    humid_img: "humidity.svg",
-		    door_img: "door.svg",
-		    beverage_img: "coffee.svg",
+        temp_img: "temperature_.svg",
+		    humid_img: "humidity_.svg",
+		    door_img: "door_.svg",
+		    beverage_img: "coffee_.svg",
+        member_img: "member_.svg",
+        sound_img: "sound_.svg",
         temp_data_array: [{x:0,y:0}],
         humid_data_array: [{x:0,y:0}],
         door_data_array: [{x:0,y:0}],
         beverage_data_array: [{x:0,y:0}],
-        sound_val: [{x:0,y:0}],
+        sound_data_array: [{x:0,y:1},{x:1,y:2},{x:2,y:3},{x:3,y:4},{x:4,y:5},{x:5,y:6},{x:6,y:7},{x:7,y:6},{x:8,y:5},{x:9,y:4},{x:10,y:3},{x:11,y:2},{x:12,y:1},],
+        member_data_array: [{x:0,y:0}],
         selected_sensor: null,
         selected_temp_time: null,
         selected_humid_time: null,
         selected_beverage_time: null,
         selected_door_time: null,
+        selected_member_time: null
 		  }
   }
 
   _beverageApiCall = () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/last/beverage`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/last/beverage`)
     .then(function(res) {
       self.setState({
         beverage_val: res.data
@@ -40,7 +44,7 @@ export default class App extends Component {
 
   _doorApiCall = () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/last/door`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/last/door`)
     .then(function(res) {
       self.setState({
         door_val: res.data
@@ -50,7 +54,7 @@ export default class App extends Component {
 
   _humidApiCall = () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/last/humid`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/last/humid`)
     .then(function(res) {
       self.setState({
         humid_val: res.data.value
@@ -60,10 +64,20 @@ export default class App extends Component {
 
   _tempApiCall = () => {
     let self= this;
-    axios.get(`http://localhost:4000/api/last/temp`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/last/temp`)
     .then(function(res) {
       self.setState({
         temp_val: res.data.value
+      })
+    })
+  }
+
+  _memberApiCall= () => {
+    let self= this;
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/signed_in`)
+    .then(function(res) {
+      self.setState({
+        member_val: res.data
       })
     })
   }
@@ -72,9 +86,9 @@ export default class App extends Component {
     console.log('api call happening');
     console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/temp`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/temp`)
     .then(function(res) {
-      console.log(res);
+      // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
         ApiRes.push(i);
@@ -87,14 +101,15 @@ export default class App extends Component {
   }
 
   _setApiHumidTime = (time="day") => {
-    console.log('api call happening');
-    console.log(time);
+    // console.log('api call happening');
+    // console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/humid`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/humid`)
     .then(function(res) {
-      console.log(res);
+      // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
+        // console.log("i is",i)
         ApiRes.push(i);
       })
       self.setState({
@@ -105,12 +120,12 @@ export default class App extends Component {
   }
 
   _setApiBeverageTime = (time="day") => {
-    console.log('api call happening');
-    console.log(time);
+    // console.log('api call happening');
+    // console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/beverage`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/beverage`)
     .then(function(res) {
-      console.log(res);
+      // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
         ApiRes.push(i);
@@ -123,12 +138,12 @@ export default class App extends Component {
   }
 
   _setApiDoorTime = (time="day") => {
-    console.log('api call happening');
-    console.log(time);
+    // console.log('api call happening');
+    // console.log(time);
     let self= this;
-    axios.get(`http://localhost:4000/api/history/${time}/door`)
+    axios.get(`https://quiet-castle-31566.herokuapp.com/api/history/${time}/door`)
     .then(function(res) {
-      console.log(res);
+      // console.log(res);
       const ApiRes = [];
       res.data.map(function(i){
         ApiRes.push(i);
@@ -140,93 +155,90 @@ export default class App extends Component {
     })
   }
 
-  // _setGraphDataNull = (sensor) => {
-  //   switch(sensor) {
-  //     case "temp":
-  //       this.setState({
-  //         temp_data_array: null
-  //       })
-  //       break;
-  //     case "humid":
-  //       this.setState({
-  //         humid_data_array: null
-  //       })
-  //       break;
-  //     case "beverage":
-  //       this.setState({
-  //         beverage_data_array: null
-  //       })
-  //       break;
-  //     case "door":
-  //       this.setState({
-  //         door_data_array: null
-  //       })
-  //       break;
-  //   }
-  // }
+
+
+  _setApiMemberTime = () => {
+  //   // console.log('api call happening');
+  //   // console.log(time);
+    let self= this;
+      axios.get(`https://quiet-castle-31566.herokuapp.com/api/signed_in`)
+    .then(function(res) {
+      const ApiRes = [];
+        ApiRes.push({x:0,y:res.data});
+      
+      self.setState({
+        member_data_array: ApiRes
+      })
+      console.log(self.state.member_data_array)
+    })
+  }
 
   componentWillMount(){
   	this._tempApiCall();
     this._humidApiCall();
     this._beverageApiCall();
     this._doorApiCall();
+    this._memberApiCall();
     this._setApiTempTime();
     this._setApiHumidTime();
     this._setApiBeverageTime();
     this._setApiDoorTime();
+    this._setApiMemberTime();
 
 		let self= this;
 
 		socket.on('temp', function(data){
-      // let last_id = self.state.temp_data_array.length;
-      // console.log("last id", last_id);
-			console.log('this inside socket: ' + data);
+      let last_temp_id = self.state.temp_data_array.length;
+			// console.log('this inside socket: ' + data);
    //    self._tempAllApiCall();
    //    self._setTempSelected();
       self.setState({
 				temp_val: data,
-   //      selected_sensor: "temp",
-   //      graph_data_array: self.state.graph_data_array.concat([{x: last_id, y: parseInt(data)}])
+        temp_data_array: self.state.temp_data_array.concat([{x: last_temp_id+1, y: parseInt(data)}])
 			});
-
 		});
 
 		socket.on('humid', function(data){
-			console.log('this inside socket: ' + data);
+      let last_humid_id = self.state.humid_data_array.length;
+			// console.log('this inside socket: ' + data);
       self.setState({
-				humid_val: data
+				humid_val: data,
+        humid_data_array: self.state.humid_data_array.concat([{x: last_humid_id+1, y: parseInt(data)}])
 			});
-
-
 		});
 
 		socket.on('beverage', function(data){
-			console.log('this inside socket: ' + data);
+			// console.log('this inside socket: ' + data);
 			self.setState({
 				beverage_val: data
 			});
-
 		});
 
 		socket.on('door', function(data){
-			console.log('this inside socket: ' + data);
+			// console.log('this inside socket: ' + data);
 			self.setState({
 				door_val: data
 			});
 
 		});
 
-
 		socket.on('sound', function(data){
 
-
-		  var spectrumMap = data.map(function(num, index){
-		   return {'x': index + 1, 'y': num};
-		  });
+		  // var spectrumMap = data.map(function(num, index){
+		  //  return {'x': index + 1, 'y': num};
+		  // });
 			self.setState({
-				sound_val: spectrumMap
+				sound_data_array: data
 			});
 		});
+
+    socket.on('member', function(data){
+      console.log('this inside socket: ' + data);
+      self.setState({
+        member_val: data,
+        member_data_array: [{x: 0, y: data }]
+      });
+    });
 
 	}
 
@@ -241,7 +253,9 @@ export default class App extends Component {
           _setApiTempTime={this._setApiTempTime}
           _setApiHumidTime={this._setApiHumidTime}
           _setApiBeverageTime={this._setApiBeverageTime}
-          _setApiDoorTime={this._setApiDoorTime} />
+          _setApiDoorTime={this._setApiDoorTime}  
+          // _setApiProfileTime={this._setApiProfileTime} 
+          />
         </div>
       </div>
 

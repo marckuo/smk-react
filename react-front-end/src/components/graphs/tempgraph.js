@@ -5,83 +5,79 @@ import * as V from 'victory';
 
 export default class TempGraph extends Component {
 
-
-
   render() {
     var time = ""
     switch (this.props.time) {
       case "day":
-        time = "HOURS"
+        time = "TODAY"
         break;
       case "week":
-        time = "DAYS"
+        time = "WEEK"
         break;
       case "month":
-        time = "DAYS"
+        time = "MONTH"
         break;
     }
+     
+    return (
 
-    console.log(this.props.data);
+      <div className="graph">               
 
-    if (this.props.data !== null) {
-      return (
-        <div id='graph'>               
         <V.VictoryChart>
-          
-          <V.VictoryAxis
-          label= {time}
+        
+        <V.VictoryAxis
+        label= {time}
+        style={{
+          axis: {stroke: "#EC334D",strokeWidth: 3},
+          // grid: {stroke: "#EC334D", strokeWidth: 3},
+          ticks: {stroke: "#EC334D"},
+          tickLabels: {fontSize: 15, fill:"#EC334D", fontFamily: "Roboto", fontWeight: "400"},
+          axisLabel: {fontSize: 15, fill:"#EC334D", fontFamily: "Roboto", fontWeight: "400"},
+
+
+        }}
+        tickCount={0}
+         standalone={false}/>
+        <V.VictoryAxis dependentAxis
+        label="TEMPERATURE (°C)"
+        style={{
+          axis: {stroke: "#EC334D",strokeWidth: 3},
+          // grid: {stroke: "#EC334D", strokeWidth: 3},
+          ticks: {stroke: "#EC334D"},
+          tickLabels: {fontSize: 15, fill:"#EC334D", fontFamily: "Roboto", fontWeight: "400"},
+          axisLabel: {fontSize:15, fill:"#EC334D", fontFamily: "Roboto", fontWeight: "400"}
+        }}
+          tickCount={5}
+         domain={[0,40]} standalone={false}/>
+     
+        {
+          (this.props.time && this.props.time !== "day") 
+          ? <V.VictoryBar
           style={{
-            axis: {stroke: "white"},
-            grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
-
-          }}
-           standalone={false}/>
-          <V.VictoryAxis dependentAxis
-          label="Temperature"
+          data: {
+            fill: "#EC334D",
+            label: {size: 20},
+            symbol: {size:20},
+          }
+        }}
+        data={this.props.data}
+        />
+          : <V.VictoryLine
           style={{
-            axis: {stroke: "white"},
-            grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
-          }}
-           domain={[0,40]} standalone={false}/>
-
-          <V.VictoryLine 
-          style={{
-            data: {
-              stroke: "white",
-              strokeWidth: 2,
-              fill: "#2761CE"
-            }
-          }}
-           data={this.props.data}
-
-           animate={{
-            onEnter: {
-              duration: 500,
-              before: () => ({
-                y: 0,
-                fill: "white"
-              })
-            }
-          }}
-          />
-
-
-
-        </V.VictoryChart>
-        </div>
-      );
-    }
-    else {
-        return (
-          <div>
-          </div>
-        );
-    }
+          data: {
+            stroke: "#EC334D",
+            strokeWidth: 5,
+            label: {size: 20},
+            symbol: {size:20},
+          }
+        }}
+        data={this.props.data}
+        />
+      }
+      </V.VictoryChart>
+      </div>
+    );
   }
 }
+
+        

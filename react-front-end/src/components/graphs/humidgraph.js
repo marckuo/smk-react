@@ -6,63 +6,72 @@ import * as V from 'victory';
 export default class HumidGraph extends Component {
 
   render() {
-    if (this.props.data !== null) {
+    var time = ""
+    switch (this.props.time) {
+      case "day":
+        time = "TODAY"
+        break;
+      case "week":
+        time = "WEEK"
+        break;
+      case "month":
+        time = "MONTH"
+        break;
+    }
+
       return (
         <div id='graph'>               
         <V.VictoryChart>
           
           <V.VictoryAxis
-          label="Time"
+          label= {time}
           style={{
-            axis: {stroke: "white"},
+            axis: {stroke: "#3670D2", strokeWidth: 3},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
+            ticks: {stroke: "#3670D2"},
+            tickLabels: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"}
 
           }}
+          tickCount={0}
            standalone={false}/>
           <V.VictoryAxis dependentAxis
-          label="Humidity"
+          label="HUMIDITY (%)"
           style={{
-            axis: {stroke: "white"},
+            axis: {stroke: "#3670D2", strokeWidth: 3},
             grid: {strokeWidth: 2},
-            ticks: {stroke: "white"},
-            tickLabels: {fontSize: 15, fill:"white"},
-            axisLabel: {fill:"white"}
+            ticks: {stroke: "#3670D2"},
+            tickLabels: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"},
+            axisLabel: {fontSize: 15, fill:"#3670D2", fontFamily: "Roboto", fontWeight: "400"}
           }}
-           domain={[0,40]} standalone={false}/>
-
-          <V.VictoryBar 
+          tickCount={4}
+          domain={[0,100]}
+          standalone={false}/>
+          {
+            (this.props.time && this.props.time !== "day") 
+          ? <V.VictoryBar
           style={{
             data: {
-              fill: "white"
+              // stroke: "#3670D2",
+              // strokeWidth: 5,
+              fill: "#3670D2"
             }
           }}
            data={this.props.data}
-
-           animate={{
-            onEnter: {
-              duration: 500,
-              before: () => ({
-                y: 0,
-                fill: "white"
-              })
+          />
+          : <V.VictoryLine
+          style={{
+            data: {
+              stroke: "#3670D2",
+              strokeWidth: 5,
+              // fill: "#3670D2"
             }
           }}
+           data={this.props.data}
           />
-
-
-
+        }
         </V.VictoryChart>
         </div>
       );
-    }
-    else {
-        return (
-          <div>
-          </div>
-        );
-    }
   }
 }
